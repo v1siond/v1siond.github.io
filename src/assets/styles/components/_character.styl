@@ -1,10 +1,16 @@
 .character
-  mix-blend-mode multiply
+  animation walking 35s infinite
   background url('/images/walking.gif') center center no-repeat
   background-size 100% 100%
-  bottom 0
-  height 14rem
-  left 15%
+  bottom 2.5%
+  height 10rem
+  left -5%
   position absolute
-  width 5rem
+  width 4rem
   z-index 6
+
+@keyframes walking
+  from
+    left -5%
+  to
+    left 110%
