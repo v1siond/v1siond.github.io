@@ -1,5 +1,5 @@
 .character
-  animation walking 35s infinite
+  animation walking 15s infinite
   background url('/images/walking.gif') center center no-repeat
   background-size 100% 100%
   bottom 2.5%
@@ -10,7 +10,31 @@
   z-index 6
 
 @keyframes walking
-  from
+  0%
     left -5%
-  to
+  33%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  35%
+    background url('/images/characgterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  36%
+    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 15%
+  37%
+    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+  38%
+    background url('/images/characgterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  40%
+    background url('/images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  41%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+  100%
     left 110%
