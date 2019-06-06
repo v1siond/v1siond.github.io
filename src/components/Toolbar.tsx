@@ -1,4 +1,4 @@
-import { Vue, Component } from 'vue-property-decorator'
+import { Watch, Vue, Component } from 'vue-property-decorator'
 import {
   Getter
 } from 'vuex-class'
@@ -12,6 +12,8 @@ import ToolbarTemplate from '../templates/components/toolbar'
 })
 export default class Toolbar extends Vue {
   @Getter('getLogin') public getLogin: any
+  @Getter('getTitle') public getTitle: any
+  @Getter('getBack') public getBack: any
 
   public logout () {
     localStorage.removeItem('token')
@@ -28,7 +30,9 @@ export default class Toolbar extends Vue {
       <ToolbarTemplate
         data={{
           ...this.$props,
-          getLogin: this.getLogin
+          getLogin: this.getLogin,
+          getTitle: this.getTitle,
+          getBack: this.getBack
         }}
         methods={{
           backHandler: this.goBack,

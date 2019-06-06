@@ -2,7 +2,7 @@ import { Vue } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import Queries from '../graphql/Queries'
 import {
-  Getter
+  Getter, Mutation
 } from 'vuex-class'
 import ThreadsTemplate from '../templates/pages/threads'
 const Query = new Queries()
@@ -32,11 +32,15 @@ const Query = new Queries()
 })
 export default class Threads extends Vue {
   @Getter('getLogin') getLogin: any
+  @Mutation('setTitle') setTitle
+  @Mutation('setBack') setBack
   loading: boolean = true
   category: any
 
   render (h: any) {
     if (this.category) {
+      this.setTitle(this.category.title || 'Threads')
+      this.setBack(true)
       return (
         <ThreadsTemplate
           class='section'

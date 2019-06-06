@@ -1,7 +1,7 @@
 import { Vue } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import Queries from '../graphql/Queries'
-import { Getter } from 'vuex-class'
+import { Getter, Mutation } from 'vuex-class'
 import vueMarkdown from 'vue-markdown'
 import ThreadTemplate from '../templates/pages/thread'
 const Query = new Queries()
@@ -33,17 +33,25 @@ const Query = new Queries()
   }
 })
 export default class Thread extends Vue {
-  @Getter('getLogin') getLogin: any
-  thread: any
+  @Getter('getLogin') public getLogin: any
+  @Mutation('setTitle') public setTitle
+  @Mutation('setBack') public setBack
+  public thread: any
 
-  render (h: any) {
+  public get returnPost () {
+    return this.thread.posts.reverse()
+  }
+
+  public render (h: any) {
     if (this.thread) {
+      this.setTitle(this.thread.title)
+      this.setBack(true)
       return (
         <ThreadTemplate
           data={{
             ...this.$props,
             thread: this.thread,
-            posts: this.thread.posts,
+            posts: this.returnPost,
             getLogin: this.getLogin
           }}
         />
