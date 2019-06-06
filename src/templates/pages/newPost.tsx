@@ -5,7 +5,6 @@ export default ({ props, children }: any) => {
   if (props.data.getLogin) {
     return (
       <main class='section new-post'>
-        <Toolbar back title='New Post' />
         <TabPanel
           preview={props.data.preview}
           showPreview={props.methods.showPreview}

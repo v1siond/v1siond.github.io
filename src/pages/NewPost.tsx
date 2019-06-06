@@ -1,11 +1,11 @@
 import { Vue } from 'vue-property-decorator'
 import VueMarkdown from 'vue-markdown'
 import Component from 'vue-class-component'
-import Mutations from '../graphql/Mutations'
+import MutationList from '../graphql/Mutations'
 import { Prop } from 'vue-property-decorator'
-import { Getter } from 'vuex-class'
+import { Getter, Mutation } from 'vuex-class'
 import NewPostTemplate from '../templates/pages/newPost'
-const Mutation = new Mutations()
+const Mutations = new MutationList()
 
 @Component({
   name: 'newPost',
@@ -19,6 +19,8 @@ export default class NewPost extends Vue {
   @Prop()
   id!: string
   @Getter('getLogin') getLogin: any
+  @Mutation('setTitle') setTitle
+  @Mutation('setBack') setBack
   postBody: string = ''
   preview: boolean = false
 
@@ -51,7 +53,7 @@ export default class NewPost extends Vue {
           body: this.postBody,
           id: this.threadId
         },
-        mutation: Mutation.createPost()
+        mutation: Mutations.createPost()
       })
       .then((result) => {
         if (result.data.createPost) {
@@ -69,6 +71,8 @@ export default class NewPost extends Vue {
   }
 
   render (h: any) {
+    this.setTitle('New Post')
+    this.setBack(true)
     return (
       <NewPostTemplate
         data={{

@@ -4,7 +4,6 @@ import PostsList from '../components/list'
 export default ({ props }: any) => {
   return (
     <main class='section'>
-      <Toolbar back title={props.data.thread.title}/>
       <PostsList
         list={props.data.posts}
         post

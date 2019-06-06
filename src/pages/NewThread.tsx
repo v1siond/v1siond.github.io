@@ -1,12 +1,12 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import Mutations from '../graphql/Mutations'
+import MutationList from '../graphql/Mutations'
 import VueMarkdown from 'vue-markdown'
 import {
-  Getter
+  Getter, Mutation
 } from 'vuex-class'
 import NewThreadTemplate from '../templates/pages/newThread'
 
-const Mutation = new Mutations()
+const Mutations = new MutationList()
 
 @Component({
   name: 'newThread',
@@ -18,6 +18,8 @@ export default class NewThread extends Vue {
   @Prop()
   id!: number
   @Getter('getLogin') getLogin: any
+  @Mutation('setTitle') setTitle
+  @Mutation('setBack') setBack
   title: string = ''
   postBody: any = ''
   preview: boolean = false
@@ -39,7 +41,7 @@ export default class NewThread extends Vue {
             title: this.title,
             body: this.postBody
           },
-          mutation: Mutation.createThread()
+          mutation: Mutations.createThread()
         })
         .then((result) => {
           this.threadSuccess(result)
@@ -68,6 +70,9 @@ export default class NewThread extends Vue {
   }
 
   render (h: any) {
+    console.log(this)
+    this.setTitle('New thread')
+    this.setBack(true)
     return (
       <NewThreadTemplate
         data={{

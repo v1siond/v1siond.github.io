@@ -1,7 +1,8 @@
 export default [
   {
     path: '',
-    component: () => import('../layouts/Home')
+    component: () => import('../layouts/Home'),
+    name: 'home'
   },
   {
     path: '/blog',
@@ -20,7 +21,7 @@ export default [
           {
             component: () => import('../pages/Threads'),
             name: 'allThreads',
-            path: '',
+            path: '/blog/categories/:id',
             props: true
           },
           {

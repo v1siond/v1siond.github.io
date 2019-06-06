@@ -7,7 +7,6 @@ export default ({ props, data, children }: any) => {
   return (
     <main {...data}>
       {children}
-      <Toolbar title='Categories' />
       {props.data.getLogin && (
         <CategoryForm
           getLogin={props.data.getLogin}

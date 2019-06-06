@@ -3,5 +3,7 @@ export interface RootState {
 }
 
 export interface AppState {
-  loggedIn: boolean
+  loggedIn: boolean,
+  title: string,
+  back: boolean
 }

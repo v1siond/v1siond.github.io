@@ -3,12 +3,12 @@ export default ({ props }: any) => {
     <nav class={`menu-top -${props.data.oculted && 'oculted'}`}>
       <section class='container'>
         <article class='links'>
-          {props.data.back && (
+          {props.data.getBack && (
             <a onClick={props.methods.backHandler} class='link'>
               <i class='fas fa-arrow-left' />
             </a>
           )}
-          <p class='link'>{props.data.title}</p>
+          <p class='link'>{props.data.getTitle}</p>
         </article>
         {props.data.getLogin ? (
           <a

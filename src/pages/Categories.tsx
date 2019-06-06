@@ -1,13 +1,13 @@
-import Vue from 'vue'
+import { Vue } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import Queries from '../graphql/Queries'
-import Mutations from '../graphql/Mutations'
+import MutationList from '../graphql/Mutations'
 import {
-  Getter
+  Getter, Mutation
 } from 'vuex-class'
 import CategoriesTemplate from '../templates/pages/categories'
 
-const Mutation = new Mutations()
+const Mutations = new MutationList()
 const Query = new Queries()
 
 @Component({
@@ -30,12 +30,15 @@ const Query = new Queries()
 })
 export default class Categories extends Vue {
   @Getter('getLogin') getLogin: any
+  @Mutation('setTitle') setTitle
+  @Mutation('setBack') setBack
+
   active: number = 1
   page: number = 0
   perPage: number = 20
   categories: any = ''
   title: string = ''
-  newCategoryMutation: any = Mutation.createCategory()
+  newCategoryMutation: any = Mutations.createCategory()
 
   categorySuccess (result: any) {
     if (result.data.createCategory) {
@@ -70,6 +73,8 @@ export default class Categories extends Vue {
   }
 
   render (h: any) {
+    this.setTitle('Categories')
+    this.setBack(true)
     return (
       <CategoriesTemplate
         class='section'
