@@ -1,40 +1,211 @@
 .character
-  animation walking 15s infinite
-  background url('/images/walking.gif') center center no-repeat
-  background-size 100% 100%
-  bottom 2.5%
-  height 10rem
-  left -5%
-  position absolute
-  width 4rem
-  z-index 6
+  animation breath 1s 1s forwards
+  &:before
+    animation walkingSm 15s forwards
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+    box-shadow 0 .75rem .5rem -.65rem black
+    content ''
+    left -250%
+    height 5rem
+    width 3rem
+    z-index 6
+    position absolute
+    +media(mobile)
+      animation walkingMd 15s forwards
+    +media(desktop)
+      animation walking 15s forwards
+      height 10rem
+      width 4rem
+  &.-jumpDownIntro
+    &:before
+      animation jumpDownIntroSm 1s 15s forwards ease-in, breathSm 3s 17s ease-in infinite alternate
+      background url('/images/characterJumpMiddleLeft.png') 
+      background-size 100% 100%
+      bottom 120%
+      height 5rem
+      left 150%
+      width 3rem
+      +media(mobile)
+        animation jumpDownIntroMd 1s 15s forwards ease-in, breathMd 3s 17s ease-in infinite alternate
+      +media(desktop)
+        animation jumpDownIntro 1s 15s forwards ease-in, breath 3s 17s ease-in infinite alternate
+        height 7rem
+        width 4rem
+    
 
 @keyframes walking
   0%
-    left -5%
+    left -15%
   33%
     background url('/images/walking.gif') center center no-repeat
     background-size 100% 100%
     bottom 2.5%
-  35%
-    background url('/images/characgterJumpStart.png') center center no-repeat
+  34%
+    background url('/images/characterJumpStart.png') center center no-repeat
     background-size 100% 100%
   36%
     background url('/images/characterJumpMiddle.png') center center no-repeat
     background-size 100% 100%
-    bottom 15%
+    bottom 25%
   37%
-    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background url('/images/characterJumpStart.png') center center no-repeat
     background-size 100% 100%
   38%
-    background url('/images/characgterJumpStart.png') center center no-repeat
-    background-size 100% 100%
-  40%
     background url('/images/characterStop.png') center center no-repeat
     background-size 100% 100%
     bottom 2.5%
-  41%
+  39%
     background url('/images/walking.gif') center center no-repeat
     background-size 100% 100%
   100%
     left 110%
+
+@keyframes walkingSm
+  0%
+    left -15%
+  33%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  34%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  36%
+    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+  37%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  38%
+    background url('/images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  39%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+  100%
+    left 110%
+
+@keyframes walkingMd
+  0%
+    left -15%
+  33%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  34%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  36%
+    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+  37%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  39%
+    background url('/images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  40%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+  100%
+    left 110%
+
+@keyframes jumpDownIntroSm
+  0%
+    background url('/images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 115%
+    bottom 120%
+  85%
+    background url('/images/characterJumpStartLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 75%
+  94%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 75%
+    bottom 42.5%
+
+@keyframes jumpDownIntroMd
+  0%
+    background url('/images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 115%
+    bottom 120%
+  85%
+    background url('/images/characterJumpStartLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 77%
+  94%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 77%
+    bottom 42.5%
+
+@keyframes jumpDownIntro
+  0%
+    background url('/images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 115%
+    bottom 120%
+  85%
+    background url('/images/characterJumpStartLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 80%
+  94%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 80%
+    bottom 42.5%
+
+@keyframes breathSm
+  0%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left 75%
+    width 3rem
+  25%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left calc(75% - .07rem)
+    width 3.07rem
+@keyframes breathMd
+  0%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left 77%
+    width 3rem
+  25%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left calc(77% - .07rem)
+    width 3.07rem
+@keyframes breath
+  0%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left 80%
+    width 4rem
+  25%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left calc(80% - .15rem)
+    width 4.15rem

@@ -29,50 +29,50 @@ const Query = new Queries()
   name: 'Categories'
 })
 export default class Categories extends Vue {
-  @Getter('getLogin') getLogin: any
-  @Mutation('setTitle') setTitle
-  @Mutation('setBack') setBack
+  @Getter('getLogin') public getLogin: any
+  @Mutation('setTitle') public setTitle
+  @Mutation('setBack') public setBack
 
-  active: number = 1
-  page: number = 0
-  perPage: number = 20
-  categories: any = ''
-  title: string = ''
-  newCategoryMutation: any = Mutations.createCategory()
+  public active: number = 1
+  public page: number = 0
+  public perPage: number = 20
+  public categories: any = ''
+  public title: string = ''
+  public newCategoryMutation: any = Mutations.createCategory()
 
-  categorySuccess (result: any) {
+  public categorySuccess (result: any) {
     if (result.data.createCategory) {
       alert('Category created successfully!')
       this.$apollo.queries.categories.refetch()
     }
   }
 
-  categoryError (error: any) {
+  public categoryError (error: any) {
     console.log(error)
   }
 
-  goToCategory (categoryId) {
+  public goToCategory (categoryId) {
     this.$router.push(`/blog/categories/${categoryId}`)
   }
 
-  prevPage () {
+  public prevPage () {
     this.page = this.page - 1
     this.active = this.active - 1
   }
 
-  goToPage (pageNumber: number) {
+  public goToPage (pageNumber: number) {
     if (pageNumber !== this.active) {
       this.page = pageNumber - 1
       this.active = pageNumber - 1
     }
   }
 
-  nextPage () {
+  public nextPage () {
     this.page = this.page + 1
     this.active = this.active + 1
   }
 
-  render (h: any) {
+  public render (h: any) {
     this.setTitle('Categories')
     this.setBack(true)
     return (

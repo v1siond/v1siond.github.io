@@ -10,6 +10,11 @@ import {
 export default class Home extends Vue {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
+  public stepsDuration: number = 15
+  $refs!: {
+    wind: any,
+    introMusic: any
+  }
   public buttons: any = [
     {
       name: 'interactive',
@@ -25,6 +30,25 @@ export default class Home extends Vue {
     }
   ]
 
+  public explosion () {
+    setTimeout(() => {
+      this.playAudio('/Explosion1.mp3', 0.75)
+    }, 15850)
+  }
+
+  public mounted () {
+    this.steps()
+    this.explosion()
+    window.addEventListener('resize', () => {
+      this.steps()
+      this.explosion()
+    })
+    this.$refs.wind.volume = 0.35
+    this.$refs.introMusic.volume = 0.5
+    this.$refs.wind.play()
+    this.$refs.introMusic.play()
+  }
+
   public buttonSelected (type) {
     this.buttons.map((button) => {
       if (button.name === type) {
@@ -33,6 +57,34 @@ export default class Home extends Vue {
         button.status = false
       }
     })
+    this.playAudio('/beep.wav', 0.5)
+  }
+
+  public steps () {
+    setTimeout(() => {
+      const vm = this
+      const stepsOne = setInterval(() => {
+        vm.playAudio('/stepstone_1.wav')
+      }, 500)
+      const jump = setTimeout(() => {
+        vm.playAudio('/jumpStart.mp3', 0.75)
+      }, 4000)
+      setTimeout(() => {
+        const stepsTwo = setInterval(() => {
+          vm.playAudio('/stepstone_1.wav')
+        }, 500)
+        setTimeout(() => { clearInterval(stepsTwo) }, 5000)
+      }, 4500)
+      setTimeout(() => {
+        clearInterval(stepsOne)
+      }, 3990)
+    }, 1000)
+  }
+
+  public playAudio (url, vol = 0.1) {
+    const a = new Audio(url)
+    a.volume = vol
+    a.play()
   }
 
   render (h: any) {
@@ -44,9 +96,31 @@ export default class Home extends Vue {
         static={this.buttons[1].status}
         blog={this.buttons[2].status}
         methods={{
-          buttonSelected: this.buttonSelected
+          buttonSelected: this.buttonSelected,
+          playAudio: this.playAudio
         }}
-      />
+      >
+      <audio
+        class='hidden'
+        controls
+        loop
+        ref='introMusic'
+        src='/intro.mp3'
+      >
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
+      <audio
+        class='hidden'
+        controls
+        ref='wind'
+        loop
+        src='/wind_4.wav'
+      >
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
+      </HomeTemplate>
     )
   }
 }
