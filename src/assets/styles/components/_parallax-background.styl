@@ -5,22 +5,16 @@
   overflow hidden
   position relative
   width 100%
-  +media(mobile)
-    animation earthquakeMd 0.5s 15.85s forwards 
-  +media(desktop)
-    animation earthquake 0.5s 15.85s forwards 
   > .background,
   > .layerBottom
     height 100%
     left 0
     position absolute
     width 100%
-  > .background
-    top 0
   > .layerBottom
     bottom 0
     height 3rem
-    z-index 6
+    z-index 7
   > .background-1
     z-index 5
   > .background-2
@@ -31,33 +25,153 @@
     z-index 2
   > .background-5
     z-index 1
+  > .background-6
+    z-index 1
   &.-intro
-    animation earthquakeSm 0.5s 15.85s forwards 
+    animation earthquakeSm 0.5s 15.85s forwards
     background-color rgba(black, .8)
     background-size 100% 100%
+    +media(mobile)
+      animation earthquakeMd 0.5s 15.85s forwards
+    +media(desktop)
+      animation earthquake 0.5s 15.85s forwards
+    > .background
+      top 0
     > .layerBottom
-      background url('/images/band/1.png') center center no-repeat
+      background url('../../assets/images/band/1.png') center center no-repeat
       background-size 100% 100%
       filter grayscale(50%)
     > .background-1
       animation moveTreeTree 15s infinite alternate
-      background url('/images/band/2.png') center center no-repeat
+      background url('../../assets/images/band/2.png') center center no-repeat
       background-size 100% 100%
       filter grayscale(50%)
       top -5%
     > .background-2
       animation moveTree 15s infinite alternate
-      background url('/images/band/4.png') center center no-repeat
+      background url('../../assets/images/band/4.png') center center no-repeat
       background-size 100% 100%
       left -2.5%
       mix-blend-mode multiply
       top 7.5%
     > .background-3
       animation moveTreeTwo 15s infinite alternate
-      background url('/images/band/6.png') center center no-repeat
+      background url('../../assets/images/band/6.png') center center no-repeat
       background-size 100% 100%
       filter grayscale(30%)
       mix-blend-mode multiply
+  &.-levelSelection
+    align-items center
+    background url('../../assets/images/forest/forestBackground.png') center center no-repeat
+    background-size 100% 100%
+    width 100%
+    > .background
+      flex(center, center)
+      top 0
+      width 400%
+      > .divisions
+        height 100%
+        width 25%
+    > .layerBottom
+      background url('../../assets/images/forest/forestFloor2.png') center center no-repeat
+      background-size 100% 100%
+    > .background-1
+      animation moveLeft 200s infinite
+      > .divisions
+        background url('../../assets/images/forest/forestFloor1.png') center center no-repeat
+        background-size 100% 100%
+      bottom 0
+      height 7rem
+      top unset
+    > .background-2
+      animation moveLeft 40s infinite forwards
+      > .divisions
+        background url('../../assets/images/forest/trees1.png') center center
+        background-size 100% 100%
+      left -1%
+      top 0
+    > .background-3
+      animation moveLeft 125s infinite
+      > .divisions
+        background url('../../assets/images/forest/trees2.png') center center
+        background-size 100% 100%
+    > .background-4
+      animation moveLeft 175s infinite
+      > .divisions
+        background url('../../assets/images/forest/treesFake.png') center center
+        background-size 100% 100%
+        top 0
+    > .background-5
+      animation moveLeft 125s infinite
+      > .divisions
+        background url('../../assets/images/forest/treesFake2.png') center center
+        background-size 100% 100%
+      top 0
+    > .background-6
+      animation moveLeft 350s infinite
+      > .divisions
+        background url('../../assets/images/forest/treesShadow.png') center center no-repeat
+        background-size 100% 100%
+        top 0
+  &.-presentation
+    > .layerBottom
+      height 20%
+    > .background-1,
+    > .background-2,
+    > .background-3,
+    > .background-4,
+    > .background-5,
+    > .background-6
+      background unset
+      > .divisions
+        background unset
+    > .background-6
+      animation unset
+      height 82%
+      width 100%
+      &:before
+        background url('../../assets/images/italyBg.png') top center no-repeat
+        background-size 100% 100%
+        content ''
+        filter grayscale(0.5)
+        height 100%
+        width 100%
+    > .colosseum
+      background url('../../assets/images/colosseum/colosseum.png') center center
+      background-size 100% 100%
+      bottom 1%
+      filter brightness(1.5)
+      height 30%
+      left 10%
+      top unset
+      transform rotate(-10deg)
+      width 40%
+      z-index 8
+      +media(mobile)
+        height 75%
+        transform rotate(-15deg)
+      +media(desktop)
+        height 60%
+        left 5%
+    > .panthenon
+      background url('../../assets/images/colosseum/panthenon.png') center center
+      background-size 100% 100%
+      bottom 15%
+      filter brightness(0.95)
+      height 30%
+      left unset
+      right 5%
+      top unset
+      width 30%
+      z-index 8
+      +media(mobile)
+        height 45%
+
+@keyframes moveLeft
+  from
+    left 0%
+  to
+    left -300%
 
 @keyframes moveTree
   0%

@@ -1,0 +1,36 @@
+.levels-selection
+  flex(center, center)
+  height 80vh
+  max-width 80vw
+  position relative
+  width calc(100% - 2rem)
+  z-index 9
+  +media(desktop)
+    height 70vh
+  > .level
+    flex(center, center)
+    border .25rem solid white
+    cursor pointer
+    height 50%
+    list-style none
+    position relative
+    width 50%
+    &:before
+      background-color rgba(black, .5)
+      bottom 0
+      content ''
+      height 100%
+      left 0
+      opacity 0
+      position absolute
+      right 0
+      top 0
+      transition fastTransition
+      width 100%
+      z-index 0
+    &:hover:before
+      opacity 1
+    > h3
+      position relative
+      z-index 1
+

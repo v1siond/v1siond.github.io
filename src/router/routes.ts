@@ -10,7 +10,7 @@ export default [
     name: 'interactiveResume',
     children: [
       {
-        component: () => import('../pages/interactiveResume/About'),
+        component: () => import('../layouts/interactiveResume/About'),
         path: '/interactive-resume'
       },
       {
@@ -36,13 +36,44 @@ export default [
     ]
   },
   {
-    path: '/static-resume',
     component: () => import('../layouts/StaticResume'),
+    path: '/static-resume',
     children: [
       {
-        name: 'About',
-        component: () => import('../pages/staticResume/About'),
-        path: '/static-resume'
+        path: '/static-resume',
+        component: () => import('../pages/staticResume/levelSelection'),
+        name: 'levelSelection'
+      },
+      {
+        name: 'about',
+        component: () => import('../layouts/staticResume/About'),
+        path: '/static-resume/about',
+        children: [
+          {
+            component: () => import('../pages/staticResume/about/levelPeresentation'),
+            name: 'presentation',
+            path: '/static-resume/about',
+            props: true
+          },
+          {
+            component: () => import('../pages/staticResume/about/bornIn'),
+            name: 'bornIn',
+            path: '/static-resume/about/born-in',
+            props: true
+          },
+          {
+            path: '/static-resume/about/live-and-work',
+            component: () => import('../pages/staticResume/about/liveAndWork'),
+            props: true,
+            name: 'liveAndWork'
+          },
+          {
+            name: 'hobbies',
+            component: () => import('../pages/staticResume/about/hobbies'),
+            path: '/static-resume/about/hobbies',
+            props: true
+          }
+        ]
       },
       {
         component: () => import('../pages/staticResume/Skills'),

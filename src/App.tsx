@@ -19,10 +19,11 @@ export default class App extends Vue {
   }
 
   public checkLogin (): void {
-    if (this.$router.currentRoute.name === 'home') {
-      this.toolbarVisible = false
-    } else {
+    console.log(this.$router.currentRoute)
+    if (this.$router.currentRoute.fullPath.includes('blog')) {
       this.toolbarVisible = true
+    } else {
+      this.toolbarVisible = false
     }
     if (localStorage.getItem('token')) {
       this.setLogin(true)
@@ -56,7 +57,7 @@ export default class App extends Vue {
     return (
       <div id='app'>
         { this.toolbarVisible && (<Toolbar ref='toolbar' />) }
-        <router-view style={this.toolbarVisible ? `height: calc( 100% - ${this.toolbarHeight}px);` : 'height: 100vh;'} />
+        <router-view style={this.toolbarVisible ? `height: calc( 100vh - ${this.toolbarHeight}px);` : 'height: 100vh;'} />
       </div>
     )
   }

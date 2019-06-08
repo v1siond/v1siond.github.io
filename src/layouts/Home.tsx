@@ -4,6 +4,8 @@ import HomeTemplate from '../templates/layouts/Home'
 import {
   Mutation
 } from 'vuex-class'
+import SoundManager from 'soundmanager2'
+
 @Component({
   name: 'categories'
 })
@@ -11,6 +13,9 @@ export default class Home extends Vue {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
   public stepsDuration: number = 15
+  public sounds: object  = {}
+  public soundManager = SoundManager.soundManager
+  public animationClass: string = '-'
   $refs!: {
     wind: any,
     introMusic: any
@@ -32,21 +37,22 @@ export default class Home extends Vue {
 
   public explosion () {
     setTimeout(() => {
-      this.playAudio('/Explosion1.mp3', 0.75)
+      this.playAudio('./Explosion1.mp3', 'explosion', 75)
     }, 15850)
   }
 
   public mounted () {
-    this.steps()
-    this.explosion()
-    window.addEventListener('resize', () => {
-      this.steps()
-      this.explosion()
+    this.soundManager.setup({
+      debugMode: false,
+      flashVersion: 9,
+      onready: () => {
+        this.backroundSound()
+        window.addEventListener('resize', () => {
+          this.animationClass  = '-'
+          this.backroundSound()
+        })
+      }
     })
-    this.$refs.wind.volume = 0.35
-    this.$refs.introMusic.volume = 0.5
-    this.$refs.wind.play()
-    this.$refs.introMusic.play()
   }
 
   public buttonSelected (type) {
@@ -57,21 +63,29 @@ export default class Home extends Vue {
         button.status = false
       }
     })
-    this.playAudio('/beep.wav', 0.5)
+    this.playAudio('./beep.wav', 'menu', 50)
+  }
+
+  public backroundSound () {
+    this.animationClass  = '-intro'
+    this.playAudio('./wind_4.wav', 'wind', 40, true)
+    this.playAudio('./intro.mp3', 'intro', 65, true)
+    this.steps()
+    this.explosion()
   }
 
   public steps () {
     setTimeout(() => {
       const vm = this
       const stepsOne = setInterval(() => {
-        vm.playAudio('/stepstone_1.wav')
+        vm.playAudio('./stepstone_1.wav', 'step')
       }, 500)
       const jump = setTimeout(() => {
-        vm.playAudio('/jumpStart.mp3', 0.75)
+        vm.playAudio('./jumpStart.mp3', 'jump', 75)
       }, 4000)
       setTimeout(() => {
         const stepsTwo = setInterval(() => {
-          vm.playAudio('/stepstone_1.wav')
+          vm.playAudio('./stepstone_1.wav', 'step')
         }, 500)
         setTimeout(() => { clearInterval(stepsTwo) }, 5000)
       }, 4500)
@@ -81,10 +95,20 @@ export default class Home extends Vue {
     }, 1000)
   }
 
-  public playAudio (url, vol = 0.1) {
-    const a = new Audio(url)
-    a.volume = vol
-    a.play()
+  public async playAudio (url: string, sound: string, vol: number = 20, loop: boolean = false) {
+    if (!this.sounds[sound]) {
+      this.sounds[sound] = await this.soundManager.createSound({
+        id: `${sound}Id`,
+        url,
+        autoLoad: true,
+        loops: loop ? 5 : 0,
+        volume: vol
+      })
+      this.sounds[sound].play()
+    } else {
+      this.sounds[sound].pause()
+      this.sounds[sound].play()
+    }
   }
 
   render (h: any) {
@@ -95,31 +119,14 @@ export default class Home extends Vue {
         interactive={this.buttons[0].status}
         static={this.buttons[1].status}
         blog={this.buttons[2].status}
+        animationClass={this.animationClass}
         methods={{
           buttonSelected: this.buttonSelected,
           playAudio: this.playAudio
         }}
       >
-      <audio
-        class='hidden'
-        controls
-        loop
-        ref='introMusic'
-        src='/intro.mp3'
-      >
-        Your browser does not support the
-        <code>audio</code> element.
-      </audio>
-      <audio
-        class='hidden'
-        controls
-        ref='wind'
-        loop
-        src='/wind_4.wav'
-      >
-        Your browser does not support the
-        <code>audio</code> element.
-      </audio>
+        <iframe src='./beep.wav' allow='autoplay' id='audio' style='display:none'></iframe>
+        <span ref='introMusic'/>
       </HomeTemplate>
     )
   }

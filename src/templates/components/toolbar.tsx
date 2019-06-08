@@ -8,7 +8,7 @@ export default ({ props }: any) => {
               <i class='fas fa-arrow-left' />
             </a>
           )}
-          <p class='link'>{props.data.getTitle}</p>
+          <p class='game-title -small'>{props.data.getTitle}</p>
         </article>
         {props.data.getLogin ? (
           <a

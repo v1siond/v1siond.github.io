@@ -5,7 +5,7 @@ export default ({ props, children }: any) => {
     return (
       <main class='section -intro'>
         {children}
-        <section class='parallax-background -intro'>
+        <section class={`parallax-background ${props.animationClass}`}>
           <header class='game-options-text'>
             <h1 class='game-title'>
               <p>Alexander Pulido</p>

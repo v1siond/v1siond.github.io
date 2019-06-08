@@ -1,15 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap&subset=cyrillic,cyrillic-ext,greek,latin-ext')
 @import url('https://fonts.googleapis.com/css?family=VT323&display=swap&subset=latin-ext,vietnamese')
-  
+
+@font-face {
+  font-family: 'videogame';
+  src:url('../fonts/videogame.ttf');
+  src:url('../fonts/videogame.ttf?#iefix') format('embedded-opentype'),
+    url('../fonts/videogame.ttf') format('woff'),
+    url('../fonts/videogame.ttf') format('truetype'),
+    url('../fonts/videogame.ttf#video-game') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+titleFont = 'videogame'
 primaryFont = 'Press Start 2P'
 secondaryFont = 'VT323'
 
 bg = #f5f5f5
 primary = #0A7B83
 action = #2AA876
+warning = #FED766
 border_bottom = .075rem solid rgba(black, .15)
 titleColor = rgba(black, .75)
 subtitleColor = rgba(black, .55)
-
+fastTransition = all .25s
 mobile = 35.5rem
 desktop = 64rem
