@@ -106,7 +106,7 @@ export default class Home extends Vue {
       })
       this.sounds[sound].play()
     } else {
-      this.sounds[sound].pause()
+      this.sounds[sound].stop()
       this.sounds[sound].play()
     }
   }

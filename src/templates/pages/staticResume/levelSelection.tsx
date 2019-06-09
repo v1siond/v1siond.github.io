@@ -6,31 +6,31 @@ export default ({ props }: any) => {
         <article class='levels-selection'>
           <a
             href='/static-resume/about'
-            class='level'
+            class='level -about'
             onmouseenter={() => props.methods.levelSelected('About')}
           >
-            level 1
+            <h3>level 1: About</h3>
           </a>
           <a
             href='/static-resume/skills'
             class='level'
             onmouseenter={() => props.methods.levelSelected('Skills')}
           >
-            level 2
+            <h3>level 2</h3>
           </a>
           <a
             href='/static-resume/experience'
             class='level'
             onmouseenter={() => props.methods.levelSelected('Experience')}
           >
-            level 3
+            <h3>level 3</h3>
           </a>
           <a
             href='/static-resume/publications'
             class='level'
             onmouseenter={() => props.methods.levelSelected('Pubacations')}
           >
-            level 4
+            <h3>level 4</h3>
           </a>
         </article>
         <article class='background background-1'>

@@ -8,12 +8,15 @@
   +media(desktop)
     height 70vh
   > .level
-    flex(center, center)
+    flex(flex-start, center)
     border .25rem solid white
+    color white
     cursor pointer
     height 50%
     list-style none
+    padding 1.5rem
     position relative
+    text-decoration none
     width 50%
     &:before
       background-color rgba(black, .5)
@@ -31,6 +34,14 @@
     &:hover:before
       opacity 1
     > h3
+      font-family titleFont
+      font-size 1rem
       position relative
+      text-shadow -.15rem 0 black, 0 .25rem black, .25rem 0 black, 0 -.15rem black
       z-index 1
-
+      +media(desktop)
+        font-size 2rem
+        line-height 2.5rem
+    &.-about
+      background url('../../assets/images/bornIn.gif') center center no-repeat
+      background-size cover

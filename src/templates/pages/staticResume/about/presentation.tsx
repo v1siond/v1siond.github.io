@@ -3,6 +3,7 @@ export default ({ props }: any) => {
     <main class='section'>
       <iframe src='./beep.wav' allow='autoplay' id='audio' style='display:none'></iframe>
       <section class='parallax-background -levelSelection -presentation'>
+        <h1 class='game-title -cartel'>Born in Rome</h1>
         <article class='background background-1'>
           <span class='divisions' />
           <span class='divisions' />
@@ -40,8 +41,6 @@ export default ({ props }: any) => {
           <span class='divisions' />
         </article>
         <article class='layerBottom'/>
-        <article class='background colosseum' />
-        <article class='background panthenon' />
       </section>
     </main>
   )
