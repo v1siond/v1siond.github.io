@@ -14,17 +14,23 @@ export default class App extends Vue {
   @Mutation('setLogin') public  setLogin
   public  toolbarHeight: number = 55
   public toolbarVisible: boolean = false
+  public toolbarBlog: boolean = false
   $refs!: {
     toolbar: HTMLFormElement
   }
 
   public checkLogin (): void {
-    console.log(this.$router.currentRoute)
-    if (this.$router.currentRoute.fullPath.includes('blog')) {
-      this.toolbarVisible = true
-    } else {
+    if (this.$router.currentRoute.name === 'home') {
       this.toolbarVisible = false
+    } else {
+      this.toolbarVisible = true
     }
+    if (this.$router.currentRoute.fullPath.includes('blog')) {
+      this.toolbarBlog = true
+    } else {
+      this.toolbarBlog = false
+    }
+
     if (localStorage.getItem('token')) {
       this.setLogin(true)
       if (this.getLogin === true && (this.$router.currentRoute.name === 'login' || this.$router.currentRoute.name === 'signup')) {
@@ -56,8 +62,8 @@ export default class App extends Vue {
   public render (h: any) {
     return (
       <div id='app'>
-        { this.toolbarVisible && (<Toolbar ref='toolbar' />) }
-        <router-view style={this.toolbarVisible ? `height: calc( 100vh - ${this.toolbarHeight}px);` : 'height: 100vh;'} />
+        { this.toolbarVisible && (<Toolbar blog={this.toolbarBlog || false} ref='toolbar' />) }
+        <router-view style={this.toolbarBlog ? `height: calc( 100vh - ${this.toolbarHeight}px);` : 'height: 100vh;'} />
       </div>
     )
   }

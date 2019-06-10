@@ -30,6 +30,12 @@
     margin-top 0
   &.-intro
     height 100vh
+  &.-presentation
+    align-content center
+    align-items center
+    animation fadeIn .5s forwards
+    background lighten(black, 15%)
+    opacity 0
 
 .link
   color subtitleColor
@@ -66,3 +72,9 @@ dd > .link
 
 input
   font-size 1.75rem
+
+.fa,
+.fas,
+.far
+  &:before
+    font-family: "Font Awesome 5 Pro"

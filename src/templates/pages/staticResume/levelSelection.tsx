@@ -1,7 +1,6 @@
 export default ({ props }: any) => {
   return (
     <main class='section -intro'>
-      <iframe src='./beep.wav' allow='autoplay' id='audio' style='display:none'></iframe>
       <section class='parallax-background -levelSelection'>
         <article class='levels-selection'>
           <a

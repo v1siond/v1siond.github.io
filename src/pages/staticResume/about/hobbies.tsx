@@ -11,9 +11,14 @@ import {
 export default class About extends Vue {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
+  @Mutation('setLevelNumber') public setLevelNumber
+  @Mutation('setLevelName') public setLevelName
+
   public mounted () {
-    this.setTitle('LVL-1.3: Hobbies')
+    this.setTitle('LVL 1-3: Hobbies')
     this.setBack(true)
+    this.setLevelNumber('1-3')
+    this.setLevelName('Hobbies')
   }
   public render (h) {
     return (

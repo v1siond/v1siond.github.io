@@ -13,6 +13,18 @@ const getters: GetterTree<AppState, RootState> = {
   getBack (state): boolean {
     const { back } = state
     return back
+  },
+  getLevelNumber (state): string {
+    const { levelNumber } = state
+    return levelNumber
+  },
+  getLevelName (state): string {
+    const { levelName } = state
+    return levelName
+  },
+  getTime (state): string {
+    const { time } = state
+    return time
   }
 }
 

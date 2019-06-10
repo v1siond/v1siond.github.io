@@ -10,6 +10,15 @@ const mutations: MutationTree<AppState> = {
   },
   setBack (state, value: boolean) {
     state.back = value
+  },
+  setLevelNumber (state, value: string) {
+    state.levelNumber = value
+  },
+  setLevelName (state, value: string) {
+    state.levelName = value
+  },
+  setTime (state, value: string) {
+    state.time = value
   }
 }
 

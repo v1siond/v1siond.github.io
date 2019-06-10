@@ -5,5 +5,8 @@ export interface RootState {
 export interface AppState {
   loggedIn: boolean,
   title: string,
-  back: boolean
+  back: boolean,
+  levelNumber: string,
+  levelName: string,
+  time: string
 }

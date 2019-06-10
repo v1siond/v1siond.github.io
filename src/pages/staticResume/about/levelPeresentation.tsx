@@ -1,8 +1,8 @@
 import { Vue } from 'vue-property-decorator'
 import Component from 'vue-class-component'
-import PresentationTemplate from '../../../templates/pages/staticResume/about/presentation'
+import PresentationTemplate from '../../../templates/components/presentationLevel'
 import {
-  Mutation
+  Getter, Mutation
 } from 'vuex-class'
 
 @Component({
@@ -11,13 +11,26 @@ import {
 export default class About extends Vue {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
+  @Mutation('setLevelNumber') public setLevelNumber
+  @Mutation('setLevelName') public setLevelName
+  @Getter('getLevelNumber') public getLevelNumber: any
+  @Getter('getLevelName') public getLevelName: any
+
   public mounted () {
     this.setTitle('LVL-1: About')
     this.setBack(true)
+    this.setLevelNumber('1')
+    this.setLevelName('About')
+    setTimeout(() => {
+      this.$router.push('/static-resume/about/born-in')
+    }, 3000)
   }
   public render (h) {
     return (
-      <PresentationTemplate />
+      <PresentationTemplate
+        getLevelNumber={this.getLevelNumber}
+        getLevelName={this.getLevelName}
+      />
     )
   }
 }
