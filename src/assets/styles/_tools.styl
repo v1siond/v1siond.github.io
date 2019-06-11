@@ -7,3 +7,429 @@ flex(align, justify)
   display flex
   flex-wrap wrap
   justify-content justify
+
+// Animations
+@keyframes fadeIn
+  from
+    opacity 0
+  to
+    opacity 1
+
+@keyframes treeGrowth
+  0%
+    bottom 5%
+    opacity 0
+    transform scale(.1)
+  10%
+    transform scale (.2) rotate(5deg)
+  20%
+    transform scale (.3) rotate(-5deg)
+  30%
+    transform scale (.4) rotate(5deg)
+  40%
+    transform scale (.5) rotate(-5deg)
+  50%
+    transform scale (.6) rotate(5deg)
+    transform scale(1.2)
+  70%
+    transform scale (.7) rotate(-5deg)
+  80%
+    transform scale (.8) rotate(0deg)
+  100%
+    bottom 20%
+    opacity 1
+    transform scale(1)
+
+@keyframes mushGrowth
+  0%
+    margin-top 15%
+    opacity 0
+    transform translateY(20%) scale(.3)
+  50%
+    transform translateY(20%) scale(.5)
+    opacity 0
+  62.5%
+    transform translateY(20%) srotate(5deg) scale(.55)
+  67.5%
+    transform translateY(20%) srotate(-5deg) scale(.55)
+  72.5%
+    transform translateY(15%) rotate(5deg) scale(.55)
+  87.5%
+    opacity .4
+    transform translateY(15%) rotate(-5deg) scale(.55)
+  92.5%
+    transform  translateY(15%) rotate(5deg) scale(.6)
+  97.5%
+    opacity .7
+    transform  translateY(15%) rotate(-5deg) scale(.65)
+  100%
+    margin-top 0
+    opacity 1
+    transform translate(0) scale(1) rotate(0)
+
+@keyframes mushMove
+  0%
+    margin-left 0
+    opacity 1
+    transform rotate(0)
+  50%
+    margin-left .5%
+    transform scale(1.025) rotate(5deg)
+  100%
+    margin-left -.5%
+    opacity 1
+    transform rotate(-5deg)
+
+@keyframes moveLeft
+  from
+    left 0%
+  to
+    left -300%
+
+@keyframes moveTree
+  0%
+    transform: scale(1.00)
+    transform: rotate(0)
+  25%
+    transform: scale(1.03)
+    transform: rotate(1.5deg)
+  50%
+    transform: scale(1.00)
+    transform: rotate(0)
+  75%
+    transform: scale(1.03)
+    transform: rotate(1.5deg)
+  100%
+    transform: scale(1.00)
+    transform: rotate(0)
+
+@keyframes moveTreeTwo
+  0%
+    transform: scale(1.00)
+    transform: rotate(0)
+  25%
+    transform: scale(1.03)
+    transform: rotate(-1.5deg)
+  50%
+    transform: scale(1.00)
+    transform: rotate(0)
+  75%
+    transform: scale(1.03)
+    transform: rotate(-1.5deg)
+  100%
+    transform: scale(1.00)
+    transform: rotate(0)
+
+@keyframes moveTreeTree
+  from
+    transform scale(1.00)
+  to
+    transform scale(1.02)
+
+@keyframes earthquake
+  0%
+    transform: scale(1.03) rotate(0)
+  30%,
+  60%,
+  90%
+    transform: scale(1.03) rotate(1deg)
+  15%,
+  45%,
+  75%
+    transform: scale(1.03) rotate(-1deg)
+  100%
+    transform: scale(1.00) rotate(0)
+
+@keyframes earthquakeSm
+  0%
+    transform: scale(1.03) rotate(0)
+  30%,
+  60%,
+  90%
+    transform: scale(1.03) rotate(1deg)
+  15%,
+  45%,
+  75%
+    transform: scale(1.03) rotate(-1deg)
+  100%
+    transform: scale(1.00) rotate(0)
+
+@keyframes earthquakeMd
+  0%
+    transform: scale(1.03) rotate(0)
+  30%,
+  60%,
+  90%
+    transform: scale(1.03) rotate(1deg)
+  15%,
+  45%,
+  75%
+    transform: scale(1.03) rotate(-1deg)
+  100%
+    transform: scale(1.00) rotate(0)
+
+@keyframes emerge
+  0%
+    bottom -100%
+    transform: scale(1) rotate(0)
+  15%
+    transform: scale(1.02) rotate(1deg)
+  30%
+    transform: scale(1) rotate(0)
+  45%
+    transform: scale(1.02) rotate(1deg)
+  60%
+    transform: scale(1) rotate(0)
+  75%
+    transform: scale(1.02) rotate(1deg)
+  90%,
+  100%
+    bottom 9%
+    transform: scale(1) rotate(0)
+
+@keyframes emergeFlor
+  0%
+    bottom -100%
+    transform: scale(1) rotate(0)
+  15%
+    transform: scale(1.02) rotate(1deg)
+  30%
+    transform: scale(1) rotate(0)
+  45%
+    transform: scale(1.02) rotate(1deg)
+  60%
+    transform: scale(1) rotate(0)
+  75%
+    transform: scale(1.02) rotate(1deg)
+  90%,
+  100%
+    bottom -5%
+    transform: scale(1) rotate(0)
+
+@keyframes walking
+  0%
+    left -15%
+  33%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  34%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  36%
+    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+  37%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  38%
+    background url('/images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  39%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+  100%
+    left 110%
+
+@keyframes walkingSm
+  0%
+    left -15%
+  33%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  34%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  36%
+    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+  37%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  38%
+    background url('/images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  39%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+  100%
+    left 110%
+
+@keyframes walkingMd
+  0%
+    left -15%
+  33%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  34%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  36%
+    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+  37%
+    background url('/images/characterJumpStart.png') center center no-repeat
+    background-size 100% 100%
+  39%
+    background url('/images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    bottom 2.5%
+  40%
+    background url('/images/walking.gif') center center no-repeat
+    background-size 100% 100%
+  100%
+    left 110%
+
+@keyframes jumpDownIntroSm
+  0%
+    background url('/images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 115%
+    bottom 120%
+  85%
+    background url('/images/characterJumpStartLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 75%
+  94%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 75%
+    bottom 42.5%
+
+@keyframes jumpDownIntroMd
+  0%
+    background url('/images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 115%
+    bottom 120%
+  85%
+    background url('/images/characterJumpStartLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 77%
+  94%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 77%
+    bottom 42.5%
+
+@keyframes jumpDownIntro
+  0%
+    background url('/images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 115%
+    bottom 120%
+  85%
+    background url('/images/characterJumpStartLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 80%
+  94%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 80%
+    bottom 42.5%
+
+@keyframes breathSm
+  0%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left 75%
+    width 3rem
+  25%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left calc(75% - .07rem)
+    width 3.07rem
+
+@keyframes breathMd
+  0%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left 77%
+    width 3rem
+  25%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left calc(77% - .07rem)
+    width 3.07rem
+
+@keyframes breath
+  0%,
+  100%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left 80%
+    width 4rem
+  25%
+    background url('/images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 42.5%
+    left calc(80% - .15rem)
+    width 4.15rem
+
+@keyframes moveGrass
+  0%
+    transform skewX(0)
+  10%
+    transform skewX(0)
+  11%
+    transform skewX(10deg)
+  12%
+    transform skewX(9deg)
+  13%
+    transform skewX(10deg)
+  14%
+    transform skewX(8deg)
+  15%
+    transform skewX(10deg)
+  16%
+    transform skewX(6)
+  17%,
+  50%
+    transform skewX(0)
+  51%
+    transform skewX(-10deg)
+  52%
+    transform skewX(-9deg)
+  53%
+    transform skewX(-10deg)
+  54%
+    transform skewX(-8deg)
+  55%
+    transform skewX(-10deg)
+  56%
+    transform skewX(-6)
+  57%,
+  80%
+    transform skewX(0)
+  81%
+    transform skewX(10deg)
+  82%
+    transform skewX(9deg)
+  83%
+    transform skewX(10deg)
+  84%
+    transform skewX(8deg)
+  85%
+    transform skewX(10deg)
+  86%
+    transform skewX(6)
+  87%,
+  100%
+    transform skewX(0)

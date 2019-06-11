@@ -58,7 +58,6 @@ export default class App extends Vue {
   }
 
   public checkToolbarHeight () {
-    console.log(window.innerWidth)
     this.toolbarHeight = this.$refs.toolbar && this.$refs.toolbar.$el.clientHeight
     this.mobile = window.innerWidth > 700 || false
   }
