@@ -39,16 +39,20 @@ export default ({ props }: any) => {
               <li class='stat'>
                 <h3>Alex</h3>
               </li>
-              <li class='stat'>
-                <h3>World</h3>
-                { props.getLevelNumber !== '_' && (
-                  <p>{ props.getLevelNumber }: { props.getLevelName }</p>
-                )}
-              </li>
-              <li class='stat'>
-                <h3>Time</h3>
-                <p>{props.getTime}</p>
-              </li>
+              { props.mobile && (
+                <li class='stat'>
+                  <h3>World</h3>
+                  { props.getLevelNumber !== '_' && (
+                    <p>{ props.getLevelNumber }: { props.getLevelName }</p>
+                  )}
+                </li>
+              )}
+              { props.mobile && (
+                <li class='stat'>
+                  <h3>Time</h3>
+                  <p>{props.data.getTime}</p>
+                </li>
+              )}
               <li class='stat' onClick={() => props.methods.openMenu()}>
                 <a><i class='fa fa-bars '/></a>
               </li>

@@ -56,6 +56,12 @@ export default [
             props: true
           },
           {
+            component: () => import('../pages/staticResume/about/abilities'),
+            name: 'presentation',
+            path: '/static-resume/about/abilities',
+            props: true
+          },
+          {
             component: () => import('../pages/staticResume/about/bornIn'),
             name: 'bornIn',
             path: '/static-resume/about/born-in',

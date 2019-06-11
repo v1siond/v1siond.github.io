@@ -22,7 +22,7 @@ export default class About extends Vue {
     this.setLevelNumber('1')
     this.setLevelName('About')
     setTimeout(() => {
-      this.$router.push('/static-resume/about/born-in')
+      this.$router.push('/static-resume/about/abilities')
     }, 3000)
   }
   public render (h) {

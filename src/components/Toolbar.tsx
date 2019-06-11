@@ -12,7 +12,9 @@ export default class Toolbar extends Vue {
   @Getter('getBack') public getBack: any
   @Getter('getLevelNumber') public getLevelNumber: any
   @Getter('getLevelName') public getLevelName: any
+  @Getter('getTime') public getTime: any
   @Prop(Boolean) public blog!: boolean | false
+  @Prop(Boolean) public mobile!: boolean | false
   public showMenu: boolean = false
   public logout () {
     localStorage.removeItem('token')
@@ -33,11 +35,13 @@ export default class Toolbar extends Vue {
         getLevelNumber={this.getLevelNumber}
         getLevelName={this.getLevelName}
         showMenu={this.showMenu}
+        mobile={this.mobile}
         data={{
           ...this.$props,
           getLogin: this.getLogin,
           getTitle: this.getTitle,
           getBack: this.getBack,
+          getTime: this.getTime,
           blog: this.blog
         }}
         methods={{

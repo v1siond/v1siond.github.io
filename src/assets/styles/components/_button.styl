@@ -1,0 +1,24 @@
+.button
+  animation fadeIn .5s 1s forwards
+  background-color rgba(black, .4)
+  bottom calc(5% - 1.5rem)
+  border .2rem solid white
+  color white
+  font-family titleFont
+  font-size .65rem
+  opacity 0
+  padding .5rem
+  position absolute
+  text-decoration none
+  text-shadow .15rem .1rem 0 black
+  z-index 9
+  +media(desktop)
+    font-size 1rem
+  &.-next
+    right 2.5%
+    > i
+      margin-left .5rem
+  &.-prev
+    left 2.5%
+    > i
+      margin-right .5rem

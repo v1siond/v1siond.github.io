@@ -15,6 +15,7 @@ export default class App extends Vue {
   public  toolbarHeight: number = 55
   public toolbarVisible: boolean = false
   public toolbarBlog: boolean = false
+  public mobile: boolean = false
   $refs!: {
     toolbar: HTMLFormElement
   }
@@ -48,6 +49,7 @@ export default class App extends Vue {
 
   public mounted () {
     this.checkLogin()
+    this.checkToolbarHeight()
     window.addEventListener('resize', this.checkToolbarHeight)
   }
 
@@ -56,13 +58,15 @@ export default class App extends Vue {
   }
 
   public checkToolbarHeight () {
+    console.log(window.innerWidth)
     this.toolbarHeight = this.$refs.toolbar && this.$refs.toolbar.$el.clientHeight
+    this.mobile = window.innerWidth > 700 || false
   }
 
   public render (h: any) {
     return (
       <div id='app'>
-        { this.toolbarVisible && (<Toolbar blog={this.toolbarBlog || false} ref='toolbar' />) }
+        { this.toolbarVisible && (<Toolbar mobile={this.mobile} blog={this.toolbarBlog || false} ref='toolbar' />) }
         <router-view style={this.toolbarBlog ? `height: calc( 100vh - ${this.toolbarHeight}px);` : 'height: 100vh;'} />
       </div>
     )
