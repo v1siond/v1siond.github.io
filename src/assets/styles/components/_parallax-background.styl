@@ -26,7 +26,7 @@
   > .background-5
     z-index 1
   > .background-6
-    z-index 1
+    z-index 0
   &.-intro
     animation earthquakeSm 0.5s 15.85s forwards
     background-color rgba(black, .8)
@@ -141,9 +141,11 @@
       > .divisions
         background url('../../assets/images/lsdForest/3.png') center center no-repeat
         background-size 100% 100%
-    > .background-3 > .divisions
-      background url('../../assets/images/lsdForest/4.png') center center no-repeat
-      background-size 100% 100%
+    > .background-3
+      animation moveGrass 155s infinite alternate
+      > .divisions
+        background url('../../assets/images/lsdForest/4.png') center center no-repeat
+        background-size 100% 100%
     > .background-4 > .divisions
       background url('../../assets/images/lsdForest/5.png') center center no-repeat
       background-size 100% 100%
@@ -274,12 +276,41 @@
       right 0
       top 40%
       width 40%
+  &.-liveAndWork
+    align-items start
+    animation fadeIn .5s forwards
+    background linear-gradient(to right, rgba(red, .55), white, rgba(red, .55))
+    > .layerBottom
+      display none
+    > .background-1
+      > .divisions
+        background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_2.png') center center no-repeat
+        background-size 100% 100%
+    > .background-2
+      > .divisions
+        background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_3.png') center center no-repeat
+        background-size 100% 100%
+    > .background-3
+      > .divisions
+        background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_1.png') center center no-repeat
+        background-size 100% 100%
+    > .background-4
+      > .divisions
+        background url('../../assets/images/peruRepresentation/Mountains/layers/rocks_2.png') center center no-repeat
+        background-size 100% 100%
+    > .background-5
+      > .divisions
+        background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_4.png') center center no-repeat
+        background-size 100% 100%
+    > .background-6
+      > .divisions
+        background url('../../assets/images/peruRepresentation/Mountains/layers/rocks_1.png') center center no-repeat
+        background-size 100% 100%
   &.-bornIn
     animation fadeIn .5s forwards
-    background linear-gradient(to right, rgba(action, .5), rgba(white, .85), rgba(red, .55))
+    background linear-gradient(to right, rgba(green, .5), rgba(white, .85), rgba(red, .55))
     background-position top center
     background-size 100% 90%
-    background-color yellow
     opacity 0
     > .background-1,
     > .background-2,

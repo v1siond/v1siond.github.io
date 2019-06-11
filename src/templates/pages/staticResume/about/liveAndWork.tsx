@@ -1,8 +1,8 @@
 export default ({ props }: any) => {
   return (
     <main class='section'>
-      <section class='parallax-background -live-and-work'>
-        <h1 class='game-title -cartel'>Live And Work</h1>
+      <section class='parallax-background -levelSelection -liveAndWork'>
+        <h1 class='game-title -cartel'>Live And Work In Arequipa</h1>
         <article class='background background-1'>
           <span class='divisions' />
           <span class='divisions' />
@@ -48,6 +48,7 @@ export default ({ props }: any) => {
           <i class='fas fa-angle-left' />
           LvL 1.2
         </a>
+        <span class='character -live-and-work'></span>
       </section>
     </main>
   )
