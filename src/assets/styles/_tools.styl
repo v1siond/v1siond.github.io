@@ -233,28 +233,68 @@ flex(align, justify)
   100%
     left 110%
 
-@keyframes StaticWalking
+@keyframes trainMove
+  0%
+    left 15%
+  32%
+    left 15%
+  33.33%
+    left 20%
+  40%
+    left -150%
+  52%
+    left -150%
+  55%
+    left 20%
+    transform rotate(1deg)
+  56%
+    transform rotate(-1deg)
+    left 16%
+  57%
+    transform rotate(1deg)
+    left 18%
+  58%
+    transform rotate(0)
+    left 15%
+  76.66%
+    left 15%
+  77.33%
+    left 20%
+  80%
+    left -150%
+  100%
+    left -150%
+
+@keyframes runAlex
   0%
     left -15%
+  50%
+    left 125%
+  100%
+    left 125%
+
+@keyframes StaticWalking
+  0%
+    left -5%
   33%
     background url('/images/walking.gif') center center no-repeat
     background-size 100% 100%
     bottom 2.5%
+  33.5%
+    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
   34%
+    background url('/images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 15%
+  35%
     background url('/images/characterJumpStart.png') center center no-repeat
     background-size 100% 100%
   36%
-    background url('/images/characterJumpMiddle.png') center center no-repeat
-    background-size 100% 100%
-    bottom 25%
-  37%
-    background url('/images/characterJumpStart.png') center center no-repeat
-    background-size 100% 100%
-  38%
     background url('/images/characterStop.png') center center no-repeat
     background-size 100% 100%
     bottom 2.5%
-  39%
+  37%
     background url('/images/walking.gif') center center no-repeat
     background-size 100% 100%
   100%
@@ -270,12 +310,12 @@ flex(align, justify)
     background-size 100% 100%
     bottom 2.5%
   34%
-    background url('/images/characterJumpStart.png') center center no-repeat
+    background url('/images/characterJumpMiddle.png') center center no-repeat
     background-size 100% 100%
   36%
     background url('/images/characterJumpMiddle.png') center center no-repeat
     background-size 100% 100%
-    bottom 25%
+    bottom 15%
   37%
     background url('/images/characterJumpStart.png') center center no-repeat
     background-size 100% 100%

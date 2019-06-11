@@ -21,7 +21,7 @@ export default ({ props }: any) => {
           <a href='/'>Start Menu</a>
         </li>
         <li class='link' onClick={() => props.methods.showLevels()}>
-          <span class='carousel'><a href='/static-resume'>Static Resume Levels</a><i class='fas fa-angle-down'></i></span>
+          <span class='carousel'><a href='/static-resume'>Static Resume Levels</a><i class={props.data.opened ? 'fas fa-angle-up' : 'fas fa-angle-down'}></i></span>
           <ul class={`sub-levels ${props.data.opened && 'opened'}`}>
             <li class='level'>
               <a href='/static-resume/about/ '>About</a>

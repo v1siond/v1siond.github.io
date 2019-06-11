@@ -48,7 +48,7 @@ export default ({ props }: any) => {
           <i class='fas fa-angle-left' />
           LvL 1.2
         </a>
-        <span class='character -live-and-work'></span>
+        <span class='character -live-and-work'/>
       </section>
     </main>
   )

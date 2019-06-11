@@ -3,41 +3,18 @@ export default ({ props }: any) => {
     <main class='section'>
       <section class='parallax-background -hobbies'>
         <article class='background background-1'>
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
+          <h1 class='game-title -cartel -hobbies'>Metalhead and MMA Fan</h1>
         </article>
-        <article class='background background-2'>
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
-        </article>
-        <article class='background background-3'>
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
-        </article>
+        <article class='background background-2'/>
+        <article class='background background-3'/>
         <article class='background background-4'>
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
+          <i class='band-member drummer' />
+          <h1 class='game-title -cartel -hobbies'>Drummer</h1>
         </article>
         <article class='background background-5'>
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
+          <h2 class='game-title -cartel -hobbies'>Martial Artist</h2>
         </article>
-        <article class='background background-6'>
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
-          <span class='divisions' />
-        </article>
+        <article class='background background-6'/>
         <article class='layerBottom'/>
         <a href='/static-resume/skills' class='button -next'>
           LvL 2
@@ -47,6 +24,13 @@ export default ({ props }: any) => {
           <i class='fas fa-angle-left' />
           LvL 1.3
         </a>
+        <span class='hobby-character running-alex'/>
+        <span class='hobby-character hammer-alex'/>
+        <span class='hobby-character punching-alex'/>
+        <span class='band-member mad-guitarrist' />
+        <span class='band-member showoff-guitarrist' />
+        <span class='band-member bass-player' />
+        <span class="band-member fan" />
       </section>
     </main>
   )

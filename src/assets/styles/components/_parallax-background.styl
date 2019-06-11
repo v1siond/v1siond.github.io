@@ -119,7 +119,8 @@
         background-size 100% 100%
         top 0
   &.-abilities,
-  &.-bornIn
+  &.-bornIn,
+  &.-hobbies
     align-items flex-start
   &.-abilities
     animation fadeIn .5s forwards
@@ -379,3 +380,36 @@
         filter grayscale(0.5)
         height 100%
         width 100%
+  &.-hobbies
+    > .layerBottom
+      background url('../../assets/images/hobbies/floor.png') center center no-repeat
+      background-size 100% 100%
+    > .background-1
+      background url('../../assets/images/hobbies/infopost.png') center center no-repeat
+      background-size 100% 100%
+      > .game-title
+        left 10%
+        position absolute
+        top 87%
+    > .background-2
+      background url('../../assets/images/hobbies/wires.png') center center no-repeat
+      background-size 100% 100%
+    > .background-3
+      background url('../../assets/images/hobbies/columns.png') center center no-repeat
+      background-size 100% 100%
+    > .background-4
+      animation trainMove 40s infinite alternate
+      background url('../../assets/images/hobbies/train.png') center center no-repeat
+      background-size 100% 100%
+      height 50%
+      left 15%
+      top 25%
+    > .background-5
+      background url('../../assets/images/hobbies/rails.png') center center no-repeat
+      background-size 100% 100%
+      > .game-title
+        left 5%
+        top 26%
+    > .background-6
+      background url('../../assets/images/hobbies/bg.png') center center no-repeat
+      background-size 100% 100%
