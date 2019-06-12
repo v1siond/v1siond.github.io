@@ -27,6 +27,7 @@
     "babel-plugin-transform-vue-jsx": "^4.0.1",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
+    "http-proxy-agent": "^2.1.0",
     "lodash.camelcase": "^4.3.0",
     "moment": "^2.22.2",
     "soundmanager2": "^2.97.20170602",

@@ -1,22 +1,29 @@
 import { Vue } from 'vue-property-decorator'
 import Component from 'vue-class-component'
-import Frontend from '../../../templates/pages/staticResume/skills/frontend'
+import FrontendTemplate from '../../../components/Skills'
 import {
   Mutation
 } from 'vuex-class'
 
 @Component({
-  name: 'About'
+  name: 'Frontend'
 })
-export default class About extends Vue {
+export default class Frontend extends Vue {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
   public current: number = 0
-  public direction: number = 1
   public transitionName: string = 'fade'
   public show: boolean = false
+  public nextUrl: any = {
+    url: '/static-resume/skills/backend',
+    text: 'Level 2.2'
+  }
+  public prevUrl: any = {
+    url: '/static-resume/',
+    text: 'Level Selection'
+  }
   public skills: any = [
     {
       title: 'JS/Frameworks',
@@ -39,42 +46,23 @@ export default class About extends Vue {
       class: ''
     }
   ]
-  public $refs!: {
-    moveSand: any
-  }
 
-  slide (dir) {
-    this.direction = dir
-    dir === 1
-      ? (this.transitionName = 'slide-next')
-      : (this.transitionName = 'slide-prev')
-    const len = this.skills.length
-    this.current = (this.current + dir % len + len) % len
-    setTimeout(() => {
-      this.$refs.moveSand.style.transition = 'unset'
-    }, 2500)
-    setTimeout(() => {
-      this.transitionName = ''
-      this.$refs.moveSand.style.left = `${this.current > 0 ? this.current * -100 : -100}%`
-    }, 3000)
-    this.$refs.moveSand.style.transition = 'all 3s'
-  }
 
   public mounted () {
     this.setTitle('LVL-2.1: Frontend')
     this.setBack(true)
     this.setLevelNumber('2-1')
     this.setLevelName('Frontend')
-    this.show = true
   }
   public render (h) {
     return (
-      <Frontend
+      <FrontendTemplate
         current={this.current}
         skills={this.skills}
-        slide={this.slide}
         show={this.show}
         transitionName={this.transitionName}
+        nextUrl={this.nextUrl}
+        prevUrl={this.prevUrl}
       />
     )
   }

@@ -285,6 +285,9 @@
     > .layerBottom
       display none
     > .background-1
+      animation moveLeft 80s infinite
+      top 20%
+      height 70%
       > .divisions
         background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_2.png') center center no-repeat
         background-size 100% 100%
@@ -435,19 +438,54 @@
           width 11%
           z-index 6
           > h3
+            animation oscill 2s ease infinite
             left 80%
             top -10%
           > .stars
             transform rotate(99.5deg)
-            left -62%
-            top 75%
+            left -59%
+            top 68%
             +media(mobile)
-              left -12%
-              top 64%
+              left -7.5%
+              top 40%
               transform rotate(-60deg)
             +media(desktop)
-              left -12%
-              top 65%
+              left 0%
+              top 45%
+              transform rotate(-60deg)
+          > .stars > i
+            position absolute
+            &:nth-child(1)
+              animation fall .25s 1.25s forwards
+              left 0%
+              top -80rem
+            &:nth-child(2)
+              animation fall .25s 1.5s forwards
+              left 20%
+              top -80rem
+            &:nth-child(3)
+              animation fall .25s 1.75s forwards
+              left 40%
+              top -80rem
+            &:nth-child(4)
+              animation fall .25s 2s forwards
+              left 60%
+              top -80rem
+            &:nth-child(5)
+              animation fall .25s 2.25s forwards
+              left 80%
+              top -80rem
+            +media(desktop)
+              &:nth-child(1)
+                left 0%
+              &:nth-child(2)
+                left 15%
+              &:nth-child(3)
+                left 30%
+              &:nth-child(4)
+                left 45%
+              &:nth-child(5)
+                left 60%
         &.rock-2
           background url('../../assets/images/skills/rock2.png') center center no-repeat
           background-size 100% 100%
@@ -457,6 +495,7 @@
           width 25%
           z-index 5
           > h3
+            animation oscill 10s ease infinite
             left 75%
             top -7%
           > .stars
@@ -465,11 +504,38 @@
             top 85%
             +media(mobile)
               left -20%
-              top 80%
-              transform rotate(-60deg)
+              top 75%
+              transform rotate(-58deg)
             +media(desktop)
-              left -22.5%
-              top 83%
+              left -18%
+              transform rotate(-59deg)
+          > .stars > i
+            &:nth-child(1)
+              animation fall .25s 2.5s forwards
+              top -80rem
+            &:nth-child(2)
+              animation fall .25s 2.75s forwards
+              top -80rem
+            &:nth-child(3)
+              animation fall .25s 3s forwards
+              top -80rem
+            &:nth-child(4)
+              animation fall .25s 3.25s forwards
+              top -80rem
+            &:nth-child(5)
+              animation fall .25s 3.5s forwards
+              top -80rem
+            +media(desktop)
+              &:nth-child(1)
+                left 30%
+              &:nth-child(2)
+                left 37.5%
+              &:nth-child(3)
+                left 45%
+              &:nth-child(4)
+                left 52.5%
+              &:nth-child(5)
+                left 60%
         &.rock-3
           background url('../../assets/images/skills/rock3.png') center center no-repeat
           background-size 100% 100%
@@ -479,6 +545,7 @@
           width 16%
           z-index 4
           > h3
+            animation oscill 5s ease infinite
             left 76%
             top -8%
           > .stars
@@ -486,9 +553,40 @@
             top 80%
             transform rotate(100deg)
             +media(mobile)
-              left -8%
+              left -15%
               top 70%
-              transform rotate(-60deg)
+              transform rotate(-57deg)
+            +media(desktop)
+              left -5%
+              transform rotate(-56deg)
+          > .stars > i
+            position absolute
+            &:nth-child(1)
+              animation fall .25s 3.75s forwards
+              top -80rem
+            &:nth-child(2)
+              animation fall .25s 4s forwards
+              top -80rem
+            &:nth-child(3)
+              animation fall .25s 4.25s forwards
+              top -80rem
+            &:nth-child(4)
+              animation fall .25s 4.5s forwards
+              top -80rem
+            &:nth-child(5)
+              animation fall .25s 4.75s forwards
+              top -80rem
+            +media(desktop)
+              &:nth-child(1)
+                left 20%
+              &:nth-child(2)
+                left 30%
+              &:nth-child(3)
+                left 40%
+              &:nth-child(4)
+                left 50%
+              &:nth-child(5)
+                left 60%
         &.rock-4
           background url('../../assets/images/skills/rock4.png') center center no-repeat
           background-size 100% 100%
@@ -498,6 +596,7 @@
           width 25%
           z-index 3
           > h3
+            animation oscill 8s ease infinite
             left 60%
             top -5%
           > .stars
@@ -505,9 +604,39 @@
             top 85%
             transform rotate(101deg)
             +media(mobile)
-              left -20%
+              left -25%
               top 75%
-              transform rotate(-60deg)
+              transform rotate(-58deg)
+            +media(mobile)
+              left -20%
+              transform rotate(-57deg)
+          > .stars > i
+            &:nth-child(1)
+              animation fall .25s 5s forwards
+              top -80rem
+            &:nth-child(2)
+              animation fall .25s 5.25s forwards
+              top -80rem
+            &:nth-child(3)
+              animation fall .25s 5.5s forwards
+              top -80rem
+            &:nth-child(4)
+              animation fall .25s 5.75s forwards
+              top -80rem
+            &:nth-child(5)
+              animation fall .25s 6s forwards
+              top -80rem
+            +media(desktop)
+              &:nth-child(1)
+                left 30%
+              &:nth-child(2)
+                left 37.5%
+              &:nth-child(3)
+                left 45%
+              &:nth-child(4)
+                left 52.5%
+              &:nth-child(5)
+                left 60%
         &.rock-5
           background url('../../assets/images/skills/rock5.png') center center no-repeat
           background-size 100% 100%
@@ -517,6 +646,7 @@
           width 18%
           z-index 2
           > h3
+            animation oscill 4s ease infinite
             left 60%
             top -5%
           > .stars
@@ -525,11 +655,28 @@
             transform rotate(101deg)
             top 80%
             +media(mobile)
-              left -14%
-              top 70%
+              left -17.5%
+              top 75%
               transform rotate(-56deg)
+            +media(desktop)
+              transform rotate(-59deg)
+          > .stars > i
+            &:nth-child(1)
+              animation fall .25s 6.25s forwards
+              top -80rem
+            &:nth-child(2)
+              animation fall .25s 6.5s forwards
+              top -80rem
+            &:nth-child(3)
+              animation fall .25s 6.75s forwards
+              top -80rem
+            &:nth-child(4)
+              animation fall .25s 7s forwards
+              top -80rem
+            &:nth-child(5)
+              animation fall .25s 7.25s forwards
+              top -80rem
         > h3
-          animation oscill 7s ease -1.25s infinite
           color lighten(#FAD69F, 25%)
           display block
           font-family titleFont
@@ -544,13 +691,27 @@
         > .stars
           color lighten(#FAD69F, 25%)
           display block
+          flex(center, center)
           font-size 75%
+          height 2rem
           min-width 5rem
           position absolute
           text-shadow -.15rem 0 darken(#A26E48, 35%), 0 .25rem darken(#A26E48, 35%), .25rem 0 darken(#A26E48, 35%), 0 -.15rem darken(#A26E48, 35%)
           width 100%
           +media(desktop)
-            font-size 125%
+            font-size 150%
+          > i
+            position absolute
+          > i:nth-child(1)
+            left 30%
+          > i:nth-child(2)
+            left 40%
+          > i:nth-child(3)
+            left 50%
+          > i:nth-child(4)
+            left 60%
+          > i:nth-child(5)
+            left 70%
     > .layerBottom
         background url('../../assets/images/skills/5.png') center center no-repeat
         background-size 100% 100%
@@ -577,12 +738,12 @@
         background-size 100% 100%
         width 20%
     > .background-4
-      animation moveLeft 150s 6s infinite forwards
+      animation moveLeft 200s infinite forwards
       > .divisions
         background url('../../assets/images/skills/2.png') center center no-repeat
         background-size 100% 100%
     > .background-5
-      animation moveLeft 230s 8s infinite forwards
+      animation moveLeft 280s infinite forwards
       > .divisions
         background url('../../assets/images/skills/1.png') center center no-repeat
         background-size 100% 100%
@@ -592,3 +753,26 @@
     transform: translate3d(0, -25px, 0)
   50%
     transform: translate3d(0, 5px, 0)
+
+@keyframes fall
+  0%
+    top -80rem
+  80%
+    transform rotateX(0)
+  82.5%
+    transform rotateX(30deg)
+  85%
+    transform rotateX(140deg)
+  87.5%
+    transform rotateX(30deg)
+  90%
+    transform rotateX(30deg)
+  92.5%
+    transform rotateX(30deg)
+  95%
+    transform rotateX(140deg)
+  97.5%
+    transform rotateX(30deg)
+  100%
+    top 30%
+    transform rotateX(10)

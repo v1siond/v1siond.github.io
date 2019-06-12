@@ -8,33 +8,29 @@
     box-shadow 0 .75rem .5rem -.65rem black
     content ''
     left -250%
-    height 5rem
-    width 3rem
+    height 10%
+    width 3.5%
     z-index 9
     position absolute
     +media(mobile)
       animation walkingMd 15s forwards
     +media(desktop)
       animation walking 15s forwards
-      height 10rem
-      width 4rem
   &.-jumpDownIntro
     &:before
       animation jumpDownIntroSm 1s 15s forwards ease-in, breathSm 3s 17s ease-in infinite alternate
       background url('/images/characterJumpMiddleLeft.png') 
       background-size 100% 100%
       bottom 120%
-      height 5rem
+      height 10%
       left 150%
-      width 3rem
+      width 3.5%
       +media(mobile)
         animation jumpDownIntroMd 1s 15s forwards ease-in, breathMd 3s 17s ease-in infinite alternate
       +media(desktop)
         animation jumpDownIntro 1s 15s forwards ease-in, breath 3s 17s ease-in infinite alternate
-        height 7rem
-        width 4rem
   &.-live-and-work
     &:before
-      height 5rem
-      width 3rem
+      height 10%
+      width 3.5%
       animation StaticWalking 45s forwards, occasionalJump 45s 45s infinite alternate forwards
