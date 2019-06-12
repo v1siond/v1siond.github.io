@@ -1,6 +1,6 @@
 import { Vue } from 'vue-property-decorator'
 import Component from 'vue-class-component'
-import LiveAndWorkTemplate from '../../../templates/pages/staticResume/about/liveAndWork'
+import Backend from '../../../templates/pages/staticResume/skills/backend'
 import {
   Mutation
 } from 'vuex-class'
@@ -15,14 +15,14 @@ export default class About extends Vue {
   @Mutation('setLevelName') public setLevelName
 
   public mounted () {
-    this.setTitle('LVL-1.2: Live and Work')
+    this.setTitle('LVL-2.2: Backend')
     this.setBack(true)
-    this.setLevelNumber('1-2')
-    this.setLevelName('Live and Work')
+    this.setLevelNumber('2-2')
+    this.setLevelName('Backend')
   }
   public render (h) {
     return (
-      <LiveAndWorkTemplate />
+      <Backend />
     )
   }
 }

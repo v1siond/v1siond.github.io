@@ -1,6 +1,6 @@
-import { Vue } from 'vue-property-decorator'
+import { Vue, Prop } from 'vue-property-decorator'
 import Component from 'vue-class-component'
-import PresentationTemplate from '../../templates/components/presentationLevel'
+import PresentationTemplate from '../templates/components/presentationLevel'
 import {
   Getter, Mutation
 } from 'vuex-class'
@@ -10,19 +10,23 @@ import {
 })
 export default class About extends Vue {
   @Mutation('setTitle') public setTitle
-  @Mutation('setBack') public setBack
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
   @Getter('getLevelNumber') public getLevelNumber: any
   @Getter('getLevelName') public getLevelName: any
 
+  @Prop() public route!: any | undefined
+  @Prop() public title!: string | undefined
+  @Prop() public levelNumber!: string | undefined
+  @Prop() public levelName!: string | undefined
+
   public mounted () {
-    this.setTitle('LVL-2: Skills')
-    this.setBack(true)
-    this.setLevelNumber('2')
-    this.setLevelName('Skills')
+    console.log(this.title, this.levelNumber, this.levelName, this.route)
+    this.setTitle(this.title)
+    this.setLevelNumber(this.levelNumber)
+    this.setLevelName(this.levelName)
     setTimeout(() => {
-      this.$router.push('/static-resume/skills/frontend')
+      this.$router.push(this.route)
     }, 3000)
   }
   public render (h) {

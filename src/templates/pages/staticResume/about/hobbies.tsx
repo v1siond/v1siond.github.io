@@ -30,7 +30,7 @@ export default ({ props }: any) => {
         <span class='band-member mad-guitarrist' />
         <span class='band-member showoff-guitarrist' />
         <span class='band-member bass-player' />
-        <span class="band-member fan" />
+        <span class='band-member fan' />
       </section>
     </main>
   )

@@ -61,7 +61,8 @@
       filter grayscale(30%)
       mix-blend-mode multiply
   &.-levelSelection,
-  &.-abilities
+  &.-abilities,
+  &.-skill
     > .background
       flex(center, center)
       width 400%
@@ -381,6 +382,7 @@
         height 100%
         width 100%
   &.-hobbies
+    animation fadeIn .5s forwards
     > .layerBottom
       background url('../../assets/images/hobbies/floor.png') center center no-repeat
       background-size 100% 100%
@@ -413,3 +415,180 @@
     > .background-6
       background url('../../assets/images/hobbies/bg.png') center center no-repeat
       background-size 100% 100%
+  &.-skill
+    align-items start
+    animation fadeIn .5s forwards
+    > .background > .divisions
+      flex(flex-start, center)
+      padding-top 4rem
+      position relative
+      +media(desktop)
+        padding-top 5rem
+      &.-skills > .rock
+        position absolute
+        &.rock-1
+          background url('../../assets/images/skills/rock1.png') center center no-repeat
+          background-size 100% 100%
+          height 26%
+          left 4%
+          top 29%
+          width 11%
+          z-index 6
+          > h3
+            left 80%
+            top -10%
+          > .stars
+            transform rotate(99.5deg)
+            left -62%
+            top 75%
+            +media(mobile)
+              left -12%
+              top 64%
+              transform rotate(-60deg)
+            +media(desktop)
+              left -12%
+              top 65%
+        &.rock-2
+          background url('../../assets/images/skills/rock2.png') center center no-repeat
+          background-size 100% 100%
+          height 55%
+          left 10%
+          top 21%
+          width 25%
+          z-index 5
+          > h3
+            left 75%
+            top -7%
+          > .stars
+            transform rotate(101deg)
+            left -20%
+            top 85%
+            +media(mobile)
+              left -20%
+              top 80%
+              transform rotate(-60deg)
+            +media(desktop)
+              left -22.5%
+              top 83%
+        &.rock-3
+          background url('../../assets/images/skills/rock3.png') center center no-repeat
+          background-size 100% 100%
+          height 35%
+          left 31%
+          top 36%
+          width 16%
+          z-index 4
+          > h3
+            left 76%
+            top -8%
+          > .stars
+            left -30%
+            top 80%
+            transform rotate(100deg)
+            +media(mobile)
+              left -8%
+              top 70%
+              transform rotate(-60deg)
+        &.rock-4
+          background url('../../assets/images/skills/rock4.png') center center no-repeat
+          background-size 100% 100%
+          height 49%
+          left 46%
+          top 35%
+          width 25%
+          z-index 3
+          > h3
+            left 60%
+            top -5%
+          > .stars
+            left -25%
+            top 85%
+            transform rotate(101deg)
+            +media(mobile)
+              left -20%
+              top 75%
+              transform rotate(-60deg)
+        &.rock-5
+          background url('../../assets/images/skills/rock5.png') center center no-repeat
+          background-size 100% 100%
+          height 40%
+          left 65%
+          top 28%
+          width 18%
+          z-index 2
+          > h3
+            left 60%
+            top -5%
+          > .stars
+            color lighten(#EBAB92, 25%)
+            left -28%
+            transform rotate(101deg)
+            top 80%
+            +media(mobile)
+              left -14%
+              top 70%
+              transform rotate(-56deg)
+        > h3
+          animation oscill 7s ease -1.25s infinite
+          color lighten(#FAD69F, 25%)
+          display block
+          font-family titleFont
+          font-size 50%
+          position absolute
+          text-shadow -.15rem 0 darken(#A26E48, 35%), 0 .25rem darken(#A26E48, 35%), .25rem 0 darken(#A26E48, 35%), 0 -.15rem darken(#A26E48, 35%)
+          min-width 100%
+          word-break normal
+          +media(desktop)
+            font-size 125%
+            line-height 150%
+        > .stars
+          color lighten(#FAD69F, 25%)
+          display block
+          font-size 75%
+          min-width 5rem
+          position absolute
+          text-shadow -.15rem 0 darken(#A26E48, 35%), 0 .25rem darken(#A26E48, 35%), .25rem 0 darken(#A26E48, 35%), 0 -.15rem darken(#A26E48, 35%)
+          width 100%
+          +media(desktop)
+            font-size 125%
+    > .layerBottom
+        background url('../../assets/images/skills/5.png') center center no-repeat
+        background-size 100% 100%
+    > .background-1
+      transition all 2s
+      > .divisions
+        position absolute
+        z-index 2
+      > .divisions:before
+        background url('../../assets/images/skills/4.png') center center no-repeat
+        background-size 100% 100%
+        content ''
+        flex(flex-start, center)
+        height 100%
+        position absolute
+        top 0
+        width 100%
+        z-index 1
+    > .background-3
+      left -100%
+      width 500%
+      > .divisions
+        background url('../../assets/images/skills/3.png') center center no-repeat
+        background-size 100% 100%
+        width 20%
+    > .background-4
+      animation moveLeft 150s 6s infinite forwards
+      > .divisions
+        background url('../../assets/images/skills/2.png') center center no-repeat
+        background-size 100% 100%
+    > .background-5
+      animation moveLeft 230s 8s infinite forwards
+      > .divisions
+        background url('../../assets/images/skills/1.png') center center no-repeat
+        background-size 100% 100%
+
+@keyframes oscill
+  0%, 100%
+    transform: translate3d(0, -25px, 0)
+  50%
+    transform: translate3d(0, 5px, 0)

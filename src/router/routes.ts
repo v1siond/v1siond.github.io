@@ -82,9 +82,29 @@ export default [
         ]
       },
       {
-        component: () => import('../pages/staticResume/Skills'),
+        component: () => import('../layouts/staticResume/Skills'),
         path: '/static-resume/skills',
-        props: true
+        props: true,
+        children: [
+          {
+            component: () => import('../pages/staticResume/skills/levelPresentation'),
+            name: 'presentation',
+            path: '/static-resume/skills',
+            props: true
+          },
+          {
+            component: () => import('../pages/staticResume/skills/frontend'),
+            name: 'bornIn',
+            path: '/static-resume/skills/frontend',
+            props: true
+          },
+          {
+            component: () => import('../pages/staticResume/skills/backend'),
+            name: 'backend',
+            path: '/static-resume/skills/backend',
+            props: true
+          }
+        ]
       },
       {
         component: () => import('../pages/staticResume/Experience'),

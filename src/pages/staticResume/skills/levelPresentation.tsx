@@ -13,10 +13,10 @@ export default class About extends Vue {
   public render (h) {
     return (
       <PresentationComponent
-        title='LVL-1: About'
-        levelNumber='1'
-        levelName='About'
-        route='/static-resume/about/abilities'
+        title='LVL-2: Skills'
+        levelNumber='2'
+        levelName='Skills'
+        route='/static-resume/skills/frontend'
       />
     )
   }
