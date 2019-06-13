@@ -2,9 +2,7 @@ export default ({ props }: any) => {
   return (
     <main class='section'>
       <section class='parallax-background -hobbies'>
-        <article class='background background-1'>
-          <h1 class='game-title -cartel -hobbies'>Metalhead and MMA Fan</h1>
-        </article>
+        <article class='background background-1'/>
         <article class='background background-2'/>
         <article class='background background-3'/>
         <article class='background background-4'>
@@ -15,7 +13,9 @@ export default ({ props }: any) => {
           <h2 class='game-title -cartel -hobbies'>Martial Artist</h2>
         </article>
         <article class='background background-6'/>
-        <article class='layerBottom'/>
+        <article class='layerBottom'>
+          <h1 class='game-title -cartel -hobbies'>Metalhead and MMA Fan</h1>
+        </article>
         <span class='hobby-character running-alex'/>
         <span class='hobby-character hammer-alex'/>
         <span class='hobby-character punching-alex'/>

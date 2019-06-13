@@ -2,7 +2,7 @@
   animation breath 1s 1s forwards
   &:before
     animation walkingSm 15s forwards
-    background url('/images/walking.gif') center center no-repeat
+    background url('../images/walking.gif') center center no-repeat
     background-size 100% 100%
     bottom 2.5%
     box-shadow 0 .75rem .5rem -.65rem black
@@ -19,7 +19,7 @@
   &.-jumpDownIntro
     &:before
       animation jumpDownIntroSm 1s 15s forwards ease-in, breathSm 3s 17s ease-in infinite alternate
-      background url('/images/characterJumpMiddleLeft.png') 
+      background url('../images/characterJumpMiddleLeft.png') center center no-repeat
       background-size 100% 100%
       bottom 120%
       height 10%
@@ -34,3 +34,17 @@
       height 10%
       width 3.5%
       animation StaticWalking 45s forwards, occasionalJump 45s 45s infinite alternate forwards
+  &.-experience
+    animation breathSm 2s infinite alternate
+    +media(mobile)
+      animation breathMd 2s infinite alternate
+    +media(desktop)
+      animation breath 2s infinite alternate
+    &:before
+      animation unset
+      background url('../images/characterStop.png') center center no-repeat
+      background-size 100% 100%
+      bottom 25%
+      left 5%
+      height 22.5%
+      width 1%
