@@ -6,9 +6,9 @@ import {
 } from 'vuex-class'
 
 @Component({
-  name: 'About'
+  name: 'BornIn'
 })
-export default class About extends Vue {
+export default class BornIn extends Vue {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
   @Mutation('setLevelNumber') public setLevelNumber

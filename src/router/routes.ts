@@ -57,7 +57,7 @@ export default [
           },
           {
             component: () => import('../pages/staticResume/about/abilities'),
-            name: 'presentation',
+            name: 'aboutPresentation',
             path: '/static-resume/about/abilities',
             props: true
           },
@@ -88,7 +88,7 @@ export default [
         children: [
           {
             component: () => import('../pages/staticResume/skills/levelPresentation'),
-            name: 'presentation',
+            name: 'skillsPresentation',
             path: '/static-resume/skills',
             props: true
           },
@@ -107,9 +107,23 @@ export default [
         ]
       },
       {
-        component: () => import('../pages/staticResume/Experience'),
+        component: () => import('../layouts/staticResume/Experience'),
         path: '/static-resume/experience',
-        props: true
+        props: true,
+        children: [
+          {
+            component: () => import('../pages/staticResume/experience/levelPresentation'),
+            name: 'experiencePresentation',
+            path: '/static-resume/experience',
+            props: true
+          },
+          {
+            component: () => import('../pages/staticResume/experience/Work'),
+            name: 'Work',
+            path: '/static-resume/experience/work',
+            props: true
+          }
+        ]
       },
       {
         component: () => import('../pages/staticResume/Posts'),

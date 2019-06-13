@@ -1,0 +1,31 @@
+.user-panel
+  background lighten(black, 15%)
+  bottom 0
+  flex(center, space-evenly)
+  height 10vh
+  left 0
+  padding .5rem
+  position absolute
+  text-shadow -.1rem 0 black, 0 .2rem black, .2rem 0 black, 0 -.1rem black
+  width 100%
+  > p
+    color white
+    font-size 70%
+    font-family titleFont
+    line-height 75%
+    order 1
+    width 100%
+    +media(mobile)
+      font-size 100%
+      order 2
+      width auto
+    +media(desktop)
+      font-size 150%
+    > span
+      margin-right .25rem
+  > a:nth-child(2)
+    order 2
+    +media(mobile)
+      order 1
+  > a:nth-child(3)
+    order 3

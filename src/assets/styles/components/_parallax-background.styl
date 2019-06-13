@@ -1,7 +1,6 @@
 .parallax-background
   flex(flex-start, center)
   display flex
-  height 100%
   overflow hidden
   position relative
   width 100%
@@ -31,6 +30,7 @@
     animation earthquakeSm 0.5s 15.85s forwards
     background-color rgba(black, .8)
     background-size 100% 100%
+    height 100%
     +media(mobile)
       animation earthquakeMd 0.5s 15.85s forwards
     +media(desktop)
@@ -73,6 +73,7 @@
     align-items center
     background url('../../assets/images/forest/forestBackground.png') center center no-repeat
     background-size 100% 100%
+    height 100%
     width 100%
     > .background
       top 0
@@ -121,8 +122,11 @@
         top 0
   &.-abilities,
   &.-bornIn,
-  &.-hobbies
+  &.-hobbies,
+  &.-liveAndWork,
+  &.-skill
     align-items flex-start
+    height 90vh
   &.-abilities
     animation fadeIn .5s forwards
     background url('../../assets/images/lsdForest/7.png') center center no-repeat
@@ -279,7 +283,6 @@
       top 40%
       width 40%
   &.-liveAndWork
-    align-items start
     animation fadeIn .5s forwards
     background linear-gradient(to right, rgba(red, .55), white, rgba(red, .55))
     > .layerBottom
@@ -395,7 +398,7 @@
       > .game-title
         left 10%
         position absolute
-        top 87%
+        top 85%
     > .background-2
       background url('../../assets/images/hobbies/wires.png') center center no-repeat
       background-size 100% 100%
@@ -419,7 +422,6 @@
       background url('../../assets/images/hobbies/bg.png') center center no-repeat
       background-size 100% 100%
   &.-skill
-    align-items start
     animation fadeIn .5s forwards
     > .background > .divisions
       flex(flex-start, center)
@@ -747,6 +749,19 @@
       > .divisions
         background url('../../assets/images/skills/1.png') center center no-repeat
         background-size 100% 100%
+  &.-experience
+    height 90vh
+    > .background-1
+      background url('../../assets/images/experience/experienceBg.png') center center no-repeat
+      background-size 100% 100%
+      flex(center, center)
+      width 400%
+      > .divisions
+        height 100%
+        position relative
+        width 25%
+        z-index 5
+
 
 @keyframes oscill
   0%, 100%

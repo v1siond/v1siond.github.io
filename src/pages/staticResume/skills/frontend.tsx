@@ -21,28 +21,112 @@ export default class Frontend extends Vue {
     text: 'Level 2.2'
   }
   public prevUrl: any = {
-    url: '/static-resume/',
-    text: 'Level Selection'
+    url: '/static-resume/about/hobbies',
+    text: 'Level 1.4'
   }
   public skills: any = [
     {
       title: 'JS/Frameworks',
-      techs: ['React', 'JavaScript', 'Phoenix', 'Rails', 'Vue'],
+      techs: [
+        {
+          name: 'React',
+          stars: 5
+        },
+        {
+          name: 'JavaScript',
+          stars: 5
+        },
+        {
+          name: 'Phoenix',
+          stars: 3
+        },
+        {
+          name: 'Rails',
+          stars: 3
+        },
+        {
+          name: 'Vue',
+          stars: 5
+        }
+      ],
       class: ''
     },
     {
       title: 'Style',
-      techs: ['Sass', 'CSS Animations', 'JS Animations', 'Stylus', 'CSS' ],
+      techs: [
+        {
+          name: 'Sass',
+          stars: 5
+        },
+        {
+          name: 'CSS Animations',
+          stars: 4
+        },
+        {
+          name: 'JS Animations',
+          stars: 4
+        },
+        {
+          name: 'Stylus',
+          stars: 5
+        },
+        {
+          name: 'CSS',
+          stars: 5
+        }
+      ],
       class: ''
     },
     {
       title: 'Miscellaneous',
-      techs: ['TypeScript', 'GraphQL / Apollo', 'Build Tools', 'Cypress', 'TDD'],
+      techs: [
+        {
+          name: 'TypeScript',
+          stars: 4
+        },
+        {
+          name: 'GraphQL / Apollo',
+          stars: 5
+        },
+        {
+          name: 'Build Tools',
+          stars: 4
+        },
+        {
+          name: 'Cypress',
+          stars: 4
+        },
+        {
+          name: 'TDD',
+          stars: 3
+        }
+      ],
       class: ''
     },
     {
-      title: '',
-      techs: ['REST', 'Email Template', 'JQuery', 'Quasar', 'Jest' ],
+      title: 'Miscellaneous',
+      techs: [
+        {
+          name: 'REST',
+          stars: 5
+        },
+        {
+          name: 'Email Template',
+          stars: 4
+        },
+        {
+          name: 'JQuery',
+          stars: 4
+        },
+        {
+          name: 'Quasar',
+          stars: 5
+        },
+        {
+          name: 'Jest',
+          stars: 3
+        }
+      ],
       class: ''
     }
   ]

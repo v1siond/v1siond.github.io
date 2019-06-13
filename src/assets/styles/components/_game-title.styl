@@ -82,7 +82,11 @@
       animation fadeIn .5s 5.25s forwards
       top 55%
   &.-skill
-    top 85%
+    top 40%
+    +media(mobile)
+      top 35%
+    +media(desktop)
+      top 20%
   &.-small
     font-size 100%
     line-height 150%

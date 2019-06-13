@@ -59,19 +59,42 @@
 
 
 .btn
-  z-index 10
+  background url('../../assets/images/skills/wall.png') center center no-repeat
+  background-size contain
+  color white
   cursor pointer
-  border 3px solid #fff
-  display flex
-  justify-content center
-  align-items center
-  width 70px
+  flex(center, center)
+  font-family titleFont
+  font-size 100%
+  font-weight bold
+  filter grayscale(.95)
   height 70px
-  position absolute
-  top calc(50% - 35px)
+  justify-content center
   left 1%
+  mix-blend-mode multiply
+  position absolute
+  top 82.5%
+  text-shadow -.1rem 0 black, 0 .2rem black, .2rem 0 black, 0 -.1rem black
   transition transform 0.3s ease-in-out
   user-select none
+  width 7rem
+  z-index 10
+  +media(mobile)
+    top 70%
+  +media(desktop)
+    top 85%
+  &:after
+    animation showAlert 60s alternate infinite
+    background-color grey
+    border .2rem solid white
+    border-radius .25rem
+    font-size 60%
+    line-height 125%
+    content 'More Skills'
+    color white
+    padding .5rem
+    position absolute
+    top -2rem
 
 
 .btn-next
@@ -81,4 +104,35 @@
 
 .btn:hover
   transform scale(1.1)
+
+
+@keyframes showAlert
+  0%
+    opacity 0
+  10%
+    opacity 0
+  14%
+    opacity 1
+  16%
+    opacity 0
+  20%
+    opacity 1
+  22%, 40%
+    opacity 0
+  42%
+    opacity 1
+  46%
+    opacity 0
+  48%
+    opacity 1
+  54%, 80%
+    opacity 0
+  82%
+    opacity 1
+  86%
+    opacity 0
+  88%
+    opacity 1
+  90%, 100%
+    opacity 0
 

@@ -1,0 +1,51 @@
+.background-element
+  position absolute
+  &.-lava-fall
+    background url('../../assets/images/experience/gifs/lava-fall.gif') center center no-repeat
+    background-size 100% 100%
+    height 10%
+    right 19.15%
+    width 4.3%
+    for num in (0..9)
+      &.child-{num}
+        top num * 10 + '%'
+  &.-lava
+    background url('../../assets/images/experience/gifs/lava.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 0
+    height 21%
+    left 46.7%
+    width 68.3%
+  &.-fire-ball
+    background url('../../assets/images/experience/gifs/fire-ball.gif') center center no-repeat
+    background-size 100% 100%
+  &.-torch
+    background url('../../assets/images/experience/gifs/torch.gif') center center no-repeat
+    background-size 100% 100%
+    height 15%
+    width 4%
+    &.t-1
+      left 59.5%
+      top 60%
+    &.t-2
+      left 40.5%
+      top 40.5%
+    &.t-3
+      left 79%
+      top 40.5%
+  &.-water
+    background url('../../assets/images/experience/gifs/water.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 0
+    height 21%
+    left 61.7%
+    width 51.2%
+  &.-waterfall
+    background url('../../assets/images/experience/gifs/waterfall.gif') center center no-repeat
+    background-size 100% 100%
+    height 10%
+    right 0
+    width 4.3%
+    for num in (0..9)
+      &.child-{num}
+        top num * 10 + '%'

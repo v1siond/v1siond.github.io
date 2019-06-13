@@ -82,13 +82,15 @@ export default ({ props }: any) => {
         <span class='mush-3-1'/>
         <span class='mush-3-2'/>
         <article class='layerBottom'/>
+      </section>
+      <section class='user-panel'>
+      <a href='/static-resume' class='button -prev'>
+        <i class='fas fa-angle-left' />
+        Level Selection
+      </a>
         <a href='/static-resume/about/born-in' class='button -next'>
           LVL 1.2
           <i class='fas fa-angle-right' />
-        </a>
-        <a href='/static-resume' class='button -prev'>
-          <i class='fas fa-angle-left' />
-          Level Selection
         </a>
       </section>
     </main>

@@ -40,15 +40,17 @@ export default ({ props }: any) => {
           <span class='divisions' />
         </article>
         <article class='layerBottom'/>
-        <a href='/static-resume/about/hobbies' class='button -next'>
-          LvL 1.4
-          <i class='fas fa-angle-right' />
-        </a>
+        <span class='character -live-and-work'/>
+      </section>
+      <section class='user-panel'>
         <a href='/static-resume/about/born-in' class='button -prev'>
           <i class='fas fa-angle-left' />
           LvL 1.2
         </a>
-        <span class='character -live-and-work'/>
+        <a href='/static-resume/about/hobbies' class='button -next'>
+          LvL 1.4
+          <i class='fas fa-angle-right' />
+        </a>
       </section>
     </main>
   )

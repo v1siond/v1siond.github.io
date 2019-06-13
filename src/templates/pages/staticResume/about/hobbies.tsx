@@ -16,14 +16,6 @@ export default ({ props }: any) => {
         </article>
         <article class='background background-6'/>
         <article class='layerBottom'/>
-        <a href='/static-resume/skills' class='button -next'>
-          LvL 2
-          <i class='fas fa-angle-right' />
-        </a>
-        <a href='/static-resume/about/live-and-work' class='button -prev'>
-          <i class='fas fa-angle-left' />
-          LvL 1.3
-        </a>
         <span class='hobby-character running-alex'/>
         <span class='hobby-character hammer-alex'/>
         <span class='hobby-character punching-alex'/>
@@ -31,6 +23,16 @@ export default ({ props }: any) => {
         <span class='band-member showoff-guitarrist' />
         <span class='band-member bass-player' />
         <span class='band-member fan' />
+      </section>
+      <section class='user-panel'>
+        <a href='/static-resume/about/live-and-work' class='button -prev'>
+          <i class='fas fa-angle-left' />
+          LvL 1.3
+        </a>
+        <a href='/static-resume/skills' class='button -next'>
+          LvL 2
+          <i class='fas fa-angle-right' />
+        </a>
       </section>
     </main>
   )

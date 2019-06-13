@@ -27,12 +27,46 @@ export default class Backend extends Vue {
   public skills: any = [
     {
       title: 'Languages',
-      techs: ['Ruby', 'JavaScript', 'Elixir', 'Java', 'PHP'],
+      techs: [
+        {
+          name: 'Ruby',
+          stars: 3
+        },
+        {
+          name: 'JavaScript',
+          stars: 4
+        },
+        {
+          name: 'Elixir',
+          stars: 2
+        },
+        {
+          name: 'Java',
+          stars: 2
+        },
+        {
+          name: 'PHP',
+          stars: 4
+        }
+        ],
       class: ''
     },
     {
       title: 'Data Base',
-      techs: ['MySQL', 'PostgreSQL', 'GraphQL', '', '' ],
+      techs: [
+        {
+          name: 'MySQL',
+          stars: 4
+        },
+        {
+          name: 'PostgreSQL',
+          stars: 3
+        },
+        {
+          name: 'GraphQL',
+          stars: 4
+        }
+        ],
       class: ''
     }
   ]

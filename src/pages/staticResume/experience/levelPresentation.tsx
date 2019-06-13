@@ -6,17 +6,17 @@ import {
 } from 'vuex-class'
 
 @Component({
-  name: 'LevelPresentation'
+  name: 'About'
 })
-export default class LevelPresentation extends Vue {
+export default class About extends Vue {
   @Mutation('setBack') public setBack
   public render (h) {
     return (
       <PresentationComponent
-        title='LVL-1: About'
-        levelNumber='1'
-        levelName='About'
-        route='/static-resume/about/abilities'
+        title='LVL-3: Work Experience'
+        levelNumber='3'
+        levelName='Experience'
+        route='/static-resume/experience/work'
       />
     )
   }

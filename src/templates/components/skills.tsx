@@ -1,21 +1,25 @@
 export default ({ props }: any) => {
-  const showRocks = (childs) => {
-    const rocks :any[] = []
+  const showRocks = (skills) => {
+    const rocks: any[] = []
 
-    for (const [i, value] of childs.entries()) {
+    for (const [i, skill] of skills.entries()) {
       rocks.push(<div class={`rock rock-${i + 1}`}>
-          <h3>{value}</h3>
+          <h3>{skill.name}</h3>
           <span class='stars'>
-            <i class='fas fa-star'/>
-            <i class='fas fa-star'/>
-            <i class='fas fa-star'/>
-            <i class='fas fa-star'/>
-            <i class='fas fa-star'/>
+            {showStars(skill.stars)}
           </span>
         </div>
       )
     }
     return rocks
+  }
+  const showStars = (stars) => {
+    const starsArray: any[] = []
+
+    for (let i: number = 0; i < stars; i++) {
+      starsArray.push(<i class='fas fa-star'/>)
+    }
+    return starsArray
   }
   const divisions = () => {
     const divisionsArray: any[] = []
@@ -35,7 +39,6 @@ export default ({ props }: any) => {
               class={`divisions slide -skills`}
             >
               {showRocks(props.skills[props.current].techs)}
-              <h2 class='game-title -skill -general'>{props.skills[props.current].title}</h2>
             </span>
           )}
         </transition-group>
@@ -51,15 +54,9 @@ export default ({ props }: any) => {
         <article class='background background-5'>
           {divisions()}
         </article>
-        <article class='layerBottom'/>
-        <a href={props.nextUrl.url} class='button -next'>
-          {props.nextUrl.text}
-          <i class='fas fa-angle-right' />
-        </a>
-        <a href={props.prevUrl} class='button -prev'>
-          <i class='fas fa-angle-left' />
-          {props.prevUrl.text}
-        </a>
+        <article class='layerBottom'>
+          <h2 class='game-title -skill -general'>{props.skills[props.current].title}</h2>
+        </article>
         <div class='btn btn-prev' aria-label='Previous slide' onClick={() => props.slide(-1)}>
           &#10094;
         </div>
@@ -67,6 +64,26 @@ export default ({ props }: any) => {
           &#10095;
         </div>
       </section>
+      <section class='user-panel'>
+      <p>
+        <span>Beginner</span>
+        <span>
+          <i class='fas fa-star'/>
+          <i class='fas fa-star'/>
+          <i class='fas fa-star'/>
+          <i class='fas fa-star'/>
+          <i class='fas fa-star'/>
+        </span>
+        <span>Expert</span>
+      </p>
+      <a href={props.prevUrl.url} class='button -prev'>
+        <i class='fas fa-angle-left' />
+        {props.prevUrl.text}
+      </a>
+      <a href={props.nextUrl.url} class='button -next'>
+        {props.nextUrl.text}
+        <i class='fas fa-angle-right' />
+      </a></section>
     </main>
   )
 }

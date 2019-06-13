@@ -6,18 +6,18 @@ import {
 } from 'vuex-class'
 
 @Component({
-  name: 'About'
+  name: 'LiveAndWork'
 })
-export default class About extends Vue {
+export default class LiveAndWork extends Vue {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
 
   public mounted () {
-    this.setTitle('LVL-1.2: Live and Work')
+    this.setTitle('LVL-1.3: Live and Work')
     this.setBack(true)
-    this.setLevelNumber('1-2')
+    this.setLevelNumber('1-3')
     this.setLevelName('Live and Work')
   }
   public render (h) {
