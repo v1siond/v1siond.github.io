@@ -1,4 +1,80 @@
 export default ({ props }: any) => {
+  const getFeatures = (projectFeatures) => {
+    const features: any[] = []
+    console.log(projectFeatures)
+    projectFeatures.map((feature, index) => {
+      features.push(
+        <li class={`feature f-${index}`}>
+          {feature}
+        </li>
+      )
+    })
+    return features
+  }
+  const getProjects = (workProjects) => {
+    const projects: any[] = []
+    workProjects.map((project, index) => {
+      const projectFeatures: any = project.features && project.features.length > 0 ? getFeatures(project.features) : null
+      projects.push(
+        <li class={`project p-${index}`}>
+          <h3><a href={project.url}>{project.name}</a></h3>
+          { projectFeatures && (
+            <ul class='features'>
+              {projectFeatures}
+            </ul>
+            )
+          }
+        </li>
+      )
+    })
+    return projects
+  }
+  const getJobs = (workJobs) => {
+    const jobs: any[] = []
+
+    workJobs.map((job, index) => {
+      const jobProjects: any = job.projects && job.projects.length > 0 ? getProjects(job.projects) : null
+      jobs.push(
+        <li class={`job j-${index}`}>
+          <h3>{job.description}</h3>
+          { jobProjects && (
+            <ul class='projects'>
+              {jobProjects}
+            </ul>
+          )}
+        </li>
+      )
+    })
+    return jobs
+  }
+  const getWorks = (works) => {
+    const worksArray: any[] = []
+
+    if (works && works.length > 0) {
+      works.map((work, index) => {
+        const jobs: any = work.jobs && work.jobs.length > 0 ? getJobs(work.jobs) : null
+        worksArray.push(
+          <article class={`experience exp-${index}`}>
+            <div class='experience-title'>
+              <h2>{work.organization}: {work.from} - {work.to}</h2>
+              { props.activeHovers[work.organization] && (
+                <span>{work.description}</span>
+                )
+              }
+            </div>
+            { jobs && (
+              <ul class='jobs'>
+                {jobs}
+              </ul>
+              )
+            }
+          </article>
+        )
+      })
+    }
+    return worksArray
+  }
+
   return (
     <main class='section'>
       <section class='parallax-background -experience'>
@@ -41,7 +117,7 @@ export default ({ props }: any) => {
             <span class='background-element -torch t-3' />
           </article>
         </section>
-        <article class='layerBottom' ref='movingBg'>
+        <section class='layerBottom' ref='movingBg'>
           <span ref='character' class='character -experience' />
           <button class='exp-btn b-1' onClick={() => props.moveBackground(-100, 'experienceTwoNext')}>
             <i class='fas fa-angle-right'></i>
@@ -61,7 +137,8 @@ export default ({ props }: any) => {
           <button class='exp-btn b-6' onClick={() => props.moveBackground(-200, 'experienceThreePrev')}>
             <i class='fas fa-angle-left'></i>
           </button>
-        </article>
+          {getWorks(props.works)}
+        </section>
       </section>
       <section class='user-panel'>
         <a href='/static-resume/skills/backend' class='button -prev'>

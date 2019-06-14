@@ -1,0 +1,174 @@
+.experience
+  height 100%
+  position absolute
+  top 0
+  width 25%
+  z-index 1
+  a
+    cursor pointer
+  > .jobs > .job
+    color white
+    list-style circle
+    padding-left 1%
+    text-align left
+    > h3,
+    > .projects > .project,
+    > .projects > .project a
+      color white
+      font-size 50%
+      font-family titleFont
+      line-height 150%
+      text-align left
+      text-decoration none
+      text-shadow -.15rem 0 black, 0 .25rem black, .25rem 0 black, 0 -.15rem black
+      +media(desktop)
+        font-size 75%
+  > .jobs > .job > .projects > .project
+    position absolute
+  &.exp-0
+    left 0
+    > .experience-title
+      left 35%
+      top -18%
+    > .jobs
+      left 35%
+      top -10%
+      width 50%
+    > .jobs  > .job
+      max-width 50%
+      position absolute
+      word-break normal
+    > .jobs  > .job.j-0
+      left 37%
+      top -10%
+      width 25%
+    > .jobs  > .job.j-1
+      left 32%
+      top: 35%
+    > .jobs  > .job.j-2
+      left 62%
+      top -10%
+      width 23%
+  &.exp-1
+    left 25%
+    > .experience-title
+      bottom 5%
+      line-height 150%
+      max-width 30%
+      right 6%
+    > .jobs
+      height 100%
+      left 0
+      list-style none
+      padding 0
+      top 0
+    > .jobs  > .job
+      height 100%
+      left 0
+      list-style none
+      padding 0
+      top -25%
+      width 100%
+      > h3
+        bottom 100%
+        left 49.5%
+        max-width 45%
+        position absolute
+    > .jobs > .job > .projects
+      height 100%
+      position absolute
+      width 100%
+      > .project
+        +media(desktop)
+          font-size 100%
+      > .project.p-0
+        left 7%
+        bottom 73%
+        width auto
+      > .project.p-1
+        left 57%
+        bottom 80%
+      > .project.p-2
+        bottom 12%
+        left 31.5%
+  &.exp-2
+    left 50%
+    > .experience-title
+      bottom 10%
+      line-height 80%
+      max-width 30%
+      right 1.5%
+      +media(mobile)
+        line-height 90%
+      +media(desktop)
+        line-height 125%
+    > .jobs
+      height 100%
+      width 100%
+    > .jobs > .job
+      height 100%
+      width 100%
+      > h3
+        bottom: 119%
+        left 39%
+        max-width 37%
+        position absolute
+        +media(mobile)
+          bottom 115%
+          max-width 33%
+        +media(desktop)
+          bottom 122%
+          max-width 37%
+    > .jobs > .job > .projects
+      height 100%
+      position absolute
+      width 100%
+      > .p-0
+        bottom 115%
+        left 1%
+        max-width 23%
+        +media(mobile)
+          bottom 100%
+        +media(desktop)
+          bottom 110%
+      > .p-1
+        bottom 55%
+        left 1%
+      > .p-2
+        bottom 17%
+        left 35%
+        max-width 14%
+      > .p-3
+        bottom 105%
+        left 40%
+        max-width 32%
+        +media(mobile)
+          bottom 98%
+        +media(desktop)
+          bottom 110%
+          left 39%
+      > .p-4
+        bottom 95%
+        max-width 19%
+        right 2.5%
+        +media(mobile)
+          bottom 100%
+        +media(desktop)
+          bottom 105%
+      > .project > .features
+        padding-left .5rem
+  &.exp-3
+    left 75%
+  > .experience-title
+    color white
+    font-family titleFont
+    line-height 150%jobs
+    position absolute
+    text-align left
+    > h2
+      font-family titleFont
+      font-size 50%
+      +media(mobile)
+        font-size 55%
+      +media(desktop)
+        font-size 100%
