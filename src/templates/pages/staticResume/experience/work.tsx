@@ -2,8 +2,8 @@ export default ({ props }: any) => {
   return (
     <main class='section'>
       <section class='parallax-background -experience'>
-        <section class='background background-1'>
-          <article class='divisions'>
+        <section class='background background-1' ref='movingBg1'>
+          <article class='divisions d-1'>
             <div class='lava-container'>
               <span class='background-element -lava-fall child-0' />
               <span class='background-element -lava-fall child-1' />
@@ -40,11 +40,27 @@ export default ({ props }: any) => {
             <span class='background-element -torch t-2' />
             <span class='background-element -torch t-3' />
           </article>
-          <article class='divisions'>
-          </article>
         </section>
-        <article class='layerBottom'>
-          <span class='character -experience' />
+        <article class='layerBottom' ref='movingBg'>
+          <span ref='character' class='character -experience' />
+          <button class='exp-btn b-1' onClick={() => props.moveBackground(-100, 'experienceTwoNext')}>
+            <i class='fas fa-angle-right'></i>
+          </button>
+          <button class='exp-btn b-2' onClick={() => props.moveBackground(0, 'experienceOnePrev')}>
+            <i class='fas fa-angle-left'></i>
+          </button>
+          <button class='exp-btn b-3' onClick={() => props.moveBackground(-200, 'experienceThreeNext')}>
+            <i class='fas fa-angle-right'></i>
+          </button>
+          <button class='exp-btn b-4' onClick={() => props.moveBackground(-100, 'experienceTwoPrev')}>
+            <i class='fas fa-angle-left'></i>
+          </button>
+          <button class='exp-btn b-5' onClick={() => props.moveBackground(-300, 'experienceFourNext')}>
+            <i class='fas fa-angle-right'></i>
+          </button>
+          <button class='exp-btn b-6' onClick={() => props.moveBackground(-200, 'experienceThreePrev')}>
+            <i class='fas fa-angle-left'></i>
+          </button>
         </article>
       </section>
       <section class='user-panel'>

@@ -8,8 +8,8 @@
     box-shadow 0 .75rem .5rem -.65rem black
     content ''
     left -250%
-    height 10%
-    width 3.5%
+    height 15%
+    width 3%
     z-index 9
     position absolute
     +media(mobile)
@@ -22,17 +22,17 @@
       background url('../images/characterJumpMiddleLeft.png') center center no-repeat
       background-size 100% 100%
       bottom 120%
-      height 10%
+      height 15%
       left 150%
-      width 3.5%
+      width 3%
       +media(mobile)
         animation jumpDownIntroMd 1s 15s forwards ease-in, breathMd 3s 17s ease-in infinite alternate
       +media(desktop)
         animation jumpDownIntro 1s 15s forwards ease-in, breath 3s 17s ease-in infinite alternate
   &.-live-and-work
     &:before
-      height 10%
-      width 3.5%
+      height 15%
+      width 3%
       animation StaticWalking 45s forwards, occasionalJump 45s 45s infinite alternate forwards
   &.-experience
     animation breathSm 2s infinite alternate
@@ -41,10 +41,403 @@
     +media(desktop)
       animation breath 2s infinite alternate
     &:before
-      animation unset
-      background url('../images/characterStop.png') center center no-repeat
-      background-size 100% 100%
-      bottom 25%
-      left 5%
-      height 22.5%
-      width 1%
+      animation walkingExperience 5s forwards
+      left -50%
+      height 20%
+  &.-experience.experienceTwoNext
+    &:before
+      animation experienceTwoNext 6.5s forwards
+  &.-experience.experienceOnePrev
+    &:before
+      animation experienceOnePrev 7s forwards
+  &.-experience.experienceThreeNext
+    &:before
+      animation experienceThreeNext 6.5s forwards
+  &.-experience.experienceTwoPrev
+    &:before
+      animation experienceTwoPrev 6.5s forwards
+  &.-experience.experienceFourNext
+    &:before
+      animation experienceFourNext 7.5s forwards
+  &.-experience.experienceThreePrev
+    &:before
+      animation experienceThreePrev 5s forwards
+
+@keyframes walkingExperience
+  0%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+    left -50%
+    width .85%
+  10%
+    left -1%
+  99%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    left 8%
+    width .85%
+  100%
+    background url('../images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+    left 8%
+    width .55%
+
+@keyframes experienceTwoNext
+  0%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+    left 8%
+    width .85%
+  9%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+  10%
+    background url('../images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+    left 9.5%
+  14%
+    bottom 50%
+  19%
+    background url('../images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+  20%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    left 13.5%
+    bottom 45%
+  29%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  30%, 49%
+    background url('../images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    left 17%
+    width .55%
+  50%, 69%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  70%
+    background url('../images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 45%
+    left 26%
+    width .85%
+  75%
+    background url('../images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 55%
+    width .85%
+  76%
+    background url('../images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  80%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+    left 30%
+    width .85%
+  99%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  100%
+    background url('../images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+    left 32%
+    width .55%
+
+@keyframes experienceOnePrev
+  0%
+    background url('../images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 32%
+    bottom 25%
+    width .75%
+  5%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  20%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+    left 30%
+    width .85%
+  24%
+    background url('../images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  25%
+    background url('../images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 55%
+    width .85%
+  30%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 45%
+    left 26%
+    width .85%
+  31%, 50%,
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  51%, 70%
+    background url('../images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 21%
+    width .75%
+  71%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  80%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    left 13.5%
+    bottom 45%
+    width .85%
+  81%
+    background url('../images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  86%
+    bottom 50%
+  90%
+    background url('../images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+    left 9.5%
+    width .85%
+  91%, 99%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  100%
+    background url('../images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 25%
+    left 8%
+    width .75%
+
+@keyframes experienceThreeNext
+  0%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    left 32%
+    bottom 25%
+    width .85%
+  20%
+    bottom 25%
+    left 38.5%
+  25%
+    left 38.5%
+    bottom 54%
+  29%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 54%
+    width .85%
+  30%
+    background url('../images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 54%
+    left 40%
+    width .85%
+  36%
+    bottom 70%
+  39%
+    background url('../images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  40%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 54%
+    left 44%
+    width .85%
+  45%
+    left 44.7%
+  60%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 99%
+    left 44.7%
+    width .85%
+  69%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+  70%
+    background url('../images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 99%
+    left 47%
+    width .85%
+  77%
+    bottom 120%
+  85%
+    background url('../images/characterJumpMiddle.png') center center no-repeat
+    background-size 100% 100%
+    bottom 35%
+    left 56%
+    width .85%
+  86%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 35%
+    width .85%
+  99%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 35%
+    width .85%
+  100%
+    background url('../images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    left 60%
+    bottom 35%
+    width .55%
+
+@keyframes experienceTwoPrev
+  0%
+    background url('../images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 60%
+    bottom 35%
+    width .75%
+  5%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 35%
+    width .85%
+  14%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 35%
+    width .85%
+  16%
+    background url('../images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 35%
+    left 56%
+    width .85%
+  23%
+    bottom 120%
+  30%
+    background url('../images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 99%
+    left 46%
+    width .85%
+  31%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 99%
+    left 46%
+    width .85%
+  40%
+    bottom 99%
+    left 44.7%
+  45%, 50%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 54%
+    left 44.7%
+    width .85%
+  55%
+    background url('../images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 54%
+    left 44%
+    width .85%
+  60%
+    bottom 70%
+  65%
+    background url('../images/characterJumpMiddleLeft.png') center center no-repeat
+    background-size 100% 100%
+    bottom 54%
+    left 40%
+    width .85%
+  66%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    bottom 54%
+    width .85%
+  70%
+    left 38.5%
+    bottom 54%
+    width .85%
+  80%
+    bottom 25%
+    left 38.5%
+    width .85%
+  99%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    left 32%
+    bottom 25%
+    width .85%
+  100%
+    background url('../images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 32%
+    bottom 25%
+    width .75%
+
+@keyframes experienceFourNext
+  0%
+    background url('../images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    left 60%
+    bottom 35%
+    width .55%
+  1%, 99%
+    background url('../images/walking.gif') center center no-repeat
+    background-size 100% 100%
+  60%
+    left 72.3%
+    bottom 35%
+    width .85%
+  99%
+    left 79.3%
+    bottom 64%
+    width .85%
+  100%
+    background url('../images/characterStop.png') center center no-repeat
+    background-size 100% 100%
+    left 79.3%
+    bottom 64%
+    width .55%
+
+@keyframes experienceThreePrev
+  100%
+    background url('../images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 60%
+    bottom 35%
+    width .75%
+  50%
+    left 72.3%
+    bottom 35%
+  6%
+    left 79.3%
+    bottom 64%
+  5%, 99%
+    background url('../images/walkingLeft.gif') center center no-repeat
+    background-size 100% 100%
+    width .85%
+  0%
+    background url('../images/characterStopLeft.png') center center no-repeat
+    background-size 100% 100%
+    left 79.3%
+    bottom 64%
+    width .75%
+

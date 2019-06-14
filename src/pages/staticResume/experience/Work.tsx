@@ -9,6 +9,11 @@ import {
   name: 'Work'
 })
 export default class Work extends Vue {
+  public $refs!: {
+    character,
+    movingBg1,
+    movingBg
+  }
   public works: any = [
     {
       from: '',
@@ -17,16 +22,23 @@ export default class Work extends Vue {
       description: '',
       work: [
         {
-          descriptio: '',
+          description: '',
           url: ''
         }
       ]
     }
   ]
+  public moveBackground (n, anim) {
+    console.log(this.$refs)
+    this.$refs.character.className = `character -experience ${anim}`
+    this.$refs.movingBg.style.left = `${n}%`
+    this.$refs.movingBg1.style.left = `${n}%`
+  }
   public render (h) {
     return (
       <WorkTemplate
         works={this.works}
+        moveBackground={this.moveBackground}
       />
     )
   }
