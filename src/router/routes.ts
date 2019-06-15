@@ -120,20 +120,10 @@ export default [
           {
             component: () => import('../pages/staticResume/experience/Work'),
             name: 'Work',
-            path: '/static-resume/experience/work',
+            path: '/static-resume/experience/work/:section?',
             props: true
           }
         ]
-      },
-      {
-        component: () => import('../pages/staticResume/Posts'),
-        path: '/static-resume/posts',
-        props: true
-      },
-      {
-        component: () => import('../pages/staticResume/Contact'),
-        path: '/static-resume/contact',
-        props: true
       }
     ]
   },
@@ -178,6 +168,12 @@ export default [
         ]
       }
     ]
+  },
+  {
+    component: () => import('../pages/Credits'),
+    path: '/credits',
+    props: true,
+    name: 'Credits'
   },
   {
     path: '/login',

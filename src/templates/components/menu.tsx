@@ -1,4 +1,5 @@
 export default ({ props }: any) => {
+  console.log(props)
   return (
     <main class='mobile-menu'>
       <ul class='stats-list -menu'>
@@ -7,8 +8,8 @@ export default ({ props }: any) => {
         </li>
         <li class='stat'>
           <h3>World</h3>
-          { props.getLevelName !== '_' ? (
-            <p>{ props.getLevelNumber }: { props.getLevelName }</p>
+          { props.data.getLevelName !== '_' && props.data.getLevelName !== 'Credits' ? (
+            <p>{ props.data.getLevelNumber }: { props.data.getLevelName }</p>
           ) : null}
         </li>
         <li class='stat'>
@@ -53,6 +54,9 @@ export default ({ props }: any) => {
         </li>
         <li class='link'>
           <a href='/blog'>Blog</a>
+        </li>
+        <li class='link'>
+          <a href='/credits'>Credits</a>
         </li>
         <li class='link' onClick={() => props.methods.openMenu()}>
           <a>Exit Menu</a>

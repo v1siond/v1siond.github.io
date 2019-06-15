@@ -76,11 +76,11 @@ export default ({ props }: any) => {
         </span>
         <span>Expert</span>
       </p>
-      <a href={props.prevUrl.url} class='button -prev'>
+      <a onClick={() => props.router.push(props.prevUrl.url)} class='button -prev'>
         <i class='fas fa-angle-left' />
         {props.prevUrl.text}
       </a>
-      <a href={props.nextUrl.url} class='button -next'>
+      <a onClick={() => props.router.push(props.nextUrl.url)} class='button -next'>
         {props.nextUrl.text}
         <i class='fas fa-angle-right' />
       </a></section>

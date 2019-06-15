@@ -22,7 +22,7 @@ export default class LiveAndWork extends Vue {
   }
   public render (h) {
     return (
-      <LiveAndWorkTemplate />
+      <LiveAndWorkTemplate router={this.$router}/>
     )
   }
 }

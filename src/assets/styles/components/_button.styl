@@ -8,8 +8,12 @@
   opacity 0
   padding .5rem
   text-decoration none
-  text-shadow .15rem .1rem 0 black
+  text-shadow -.1rem 0 black, 0 .2rem black, .2rem 0 black, 0 -.1rem black
+  transition fastTransition
   z-index 9
+  &:hover
+    background-color rgba(black, .7)
+  color lighten(grey, 35%)
   +media(desktop)
     font-size 1rem
   &.-next

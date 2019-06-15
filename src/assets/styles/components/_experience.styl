@@ -4,14 +4,57 @@
   top 0
   width 25%
   z-index 1
+  *
+    word-break normal
+  > .experience-title
+    color white
+    font-family titleFont
+    line-height 150%
+    position absolute
+    text-align left
+    text-shadow -.15rem 0 black, 0 .25rem black, .25rem 0 black, 0 -.15rem black
+    z-index 9
+    > h2
+      font-family titleFont
+      font-size 50%
+      +media(mobile)
+        font-size 55%
+      +media(desktop)
+        font-size 100%
+    > span,
+    > h2 > p
+      font-family titleFont
+      font-size 60%
+      line-height 150%
+      text-shadow -.15rem 0 black, 0 .25rem black, .25rem 0 black, 0 -.15rem black
+    > span
+      border .2rem solid white
+      box-shadow .15rem .15rem 0 0 black
+      opacity 0
+      overflow hidden
+      padding .5rem
+      position absolute
+      transition fastTransition
+      width 100%
+      &.opened
+        opacity 1
   a
     cursor pointer
+    transition fastTransition
+    &:hover
+      color grey
   > .jobs > .job
     color white
     list-style circle
+    opacity 0
     padding-left 1%
     text-align left
+    &.show
+      animation fadeIn 1s 3s forwards
+    &.hide
+      animation fadeOut 1s forwards
     > h3,
+    > h3 a,
     > .projects > .project,
     > .projects > .project a
       color white
@@ -22,14 +65,54 @@
       text-decoration none
       text-shadow -.15rem 0 black, 0 .25rem black, .25rem 0 black, 0 -.15rem black
       +media(desktop)
-        font-size 75%
+        font-size 85%
+    > h3 a:hover
+      color lighten(grey, 25%)
   > .jobs > .job > .projects > .project
+    border .2rem solid white
+    padding .5rem
     position absolute
+    > h3
+      flex(center, space-between)
+      width auto
+      > i
+        cursor pointer
+        transition fastTransition
+        &:hover
+          transform scale(1.1)
+    > .features
+      height 0
+      opacity 0
+      overflow hidden
+      visibility hidden
+      &.opened
+        height auto
+        opacity 1
+        visibility visible
+    > .features .feature
+      color white
+      font-size 150%
+      list-style circle
+      line-height 150%
+      &:before
+        content '-'
   &.exp-0
     left 0
     > .experience-title
       left 35%
-      top -18%
+      top -20%
+      +media(mobile)
+        top -22.5%
+      +media(desktop)
+        top -20%
+      > span
+          background darken(#002A3E, 15%)
+          right -410%
+          top -100%
+          width 400%
+          +media(mobile)
+            right -260%
+            width 250%
     > .jobs
       left 35%
       top -10%
@@ -40,14 +123,14 @@
       word-break normal
     > .jobs  > .job.j-0
       left 37%
-      top -10%
+      top -8%
       width 25%
     > .jobs  > .job.j-1
       left 32%
       top: 35%
     > .jobs  > .job.j-2
       left 62%
-      top -10%
+      top -8%
       width 23%
   &.exp-1
     left 25%
@@ -55,7 +138,21 @@
       bottom 5%
       line-height 150%
       max-width 30%
-      right 6%
+      right 10%
+      +media(mobile)
+        right 15%
+      > span
+        background darken(#0C333D, 10%)
+        left -70%
+        top -300%
+        width 220%
+        +media(mobile)
+          left 0
+          top -300%
+          width 220%
+        +media(desktop)
+          top -230%
+          width 200%
     > .jobs
       height 100%
       left 0
@@ -82,19 +179,22 @@
         +media(desktop)
           font-size 100%
       > .project.p-0
+        background #021721
         left 7%
-        bottom 73%
+        bottom 65%
         width auto
       > .project.p-1
-        left 57%
-        bottom 80%
+        background #021721
+        left 49%
+        bottom 75%
       > .project.p-2
-        bottom 12%
-        left 31.5%
+        background rgba(darken(#002A3E, 25%), .75)
+        bottom 13%
+        left 28%
   &.exp-2
     left 50%
     > .experience-title
-      bottom 10%
+      bottom 5%
       line-height 80%
       max-width 30%
       right 1.5%
@@ -102,6 +202,17 @@
         line-height 90%
       +media(desktop)
         line-height 125%
+       > span
+        background darken(#002A3E, 35%)
+        left -30%
+        width 130%
+        top -300%
+        +media(mobile)
+          top -370%
+        +media(desktop)
+          left 0
+          width 100%
+          top -200%
     > .jobs
       height 100%
       width 100%
@@ -117,58 +228,78 @@
           bottom 115%
           max-width 33%
         +media(desktop)
-          bottom 122%
+          bottom 119%
           max-width 37%
     > .jobs > .job > .projects
       height 100%
       position absolute
       width 100%
       > .p-0
-        bottom 115%
+        background darken(#021721, 25%)
         left 1%
         max-width 23%
+        top -35%
         +media(mobile)
-          bottom 100%
+          top -30%
         +media(desktop)
-          bottom 110%
+          top -32%
       > .p-1
-        bottom 55%
         left 1%
+        top 30%
       > .p-2
-        bottom 17%
-        left 35%
-        max-width 14%
-      > .p-3
-        bottom 105%
-        left 40%
-        max-width 32%
+        background darken(#021721, 25%)
+        left 34.5%
+        max-width 30.5%
+        top 65%
         +media(mobile)
-          bottom 98%
+          left 33.5%
+          max-width 17%
+          top 65%
+      > .p-3
+        background darken(#002A3E, 25%)
+        left 37%
+        max-width 35%
+        top -19%
+        +media(mobile)
+          left 38.75%
+          top -17.5%
         +media(desktop)
-          bottom 110%
           left 39%
+          top -19%
       > .p-4
-        bottom 95%
         max-width 19%
         right 2.5%
-        +media(mobile)
-          bottom 100%
+        top -20%
         +media(desktop)
-          bottom 105%
-      > .project > .features
-        padding-left .5rem
+          top -18%
   &.exp-3
     left 75%
-  > .experience-title
-    color white
-    font-family titleFont
-    line-height 150%jobs
-    position absolute
-    text-align left
-    > h2
-      font-family titleFont
-      font-size 50%
+    > .experience-title
+      bottom 20%
+      left 10%
+      line-height 100%
+      max-width 32%
       +media(mobile)
-        font-size 55%
-      +media(desktop)
-        font-size 100%
+        right 22%
+      > span
+        background darken(#002A3E, 15%)
+        top -210%
+        width auto
+        +media(mobile)
+          top -210%
+        +media(desktop)
+          top -150%
+    > .jobs
+      align-content flex-start
+      flex(flex-start, space-between)
+      bottom 0
+      height 135%
+      padding-left 2%
+      position absolute
+      width 100%
+      +media(mobile)
+        height 127%
+      > .job
+        line-height 150%
+        padding .25rem
+        width 30%

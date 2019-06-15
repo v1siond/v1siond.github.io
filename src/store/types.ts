@@ -8,5 +8,5 @@ export interface AppState {
   back: boolean,
   levelNumber: string,
   levelName: string,
-  time: string
+  time: number
 }

@@ -2,7 +2,7 @@ import { Vue, Prop } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import PresentationComponent from '../../../components/levelPresentation'
 import {
-  Getter, Mutation
+  Mutation
 } from 'vuex-class'
 
 @Component({
@@ -10,6 +10,7 @@ import {
 })
 export default class LevelPresentation extends Vue {
   @Mutation('setBack') public setBack
+
   public render (h) {
     return (
       <PresentationComponent
@@ -17,6 +18,7 @@ export default class LevelPresentation extends Vue {
         levelNumber='1'
         levelName='About'
         route='/static-resume/about/abilities'
+        router={this.$router}
       />
     )
   }

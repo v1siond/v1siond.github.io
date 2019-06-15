@@ -21,7 +21,7 @@ export default class BornIn extends Vue {
   }
   public render (h) {
     return (
-      <BornInTemplate />
+      <BornInTemplate router={this.$router}/>
     )
   }
 }

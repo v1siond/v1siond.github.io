@@ -1,0 +1,23 @@
+.contact-form
+  border .2rem solid white
+  flex(center, center)
+  max-width 90%
+  padding 1.5rem
+  +media(mobile)
+    max-width 80%
+  +media(desktop)
+    max-width 50%
+  > input,
+  > textarea
+    background-color lighten(black, 15%)
+    border .01rem solid white
+    color white
+    font-size 100%
+    margin-bottom 1rem
+    padding .25rem
+    text-shadow -.1rem 0 black, 0 .2rem black, .2rem 0 black, 0 -.1rem black
+    width 100%
+  > textarea
+    height 12rem
+    overflow auto
+    resize none

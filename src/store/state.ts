@@ -6,7 +6,7 @@ const state: AppState = {
   back: false,
   levelNumber: '_',
   levelName: '_',
-  time: '0: 00'
+  time: 0
 }
 
 export default state

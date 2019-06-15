@@ -67,6 +67,17 @@ export default class App extends Vue {
       <div id='app'>
         { this.toolbarVisible && (<Toolbar mobile={this.mobile} blog={this.toolbarBlog || false} ref='toolbar' />) }
         <router-view style={this.toolbarBlog ? `height: calc( 100vh - ${this.toolbarHeight}px);` : 'height: 100vh;'} />
+        <footer class='footer'>
+          <article class='about'>
+            <h2 class='game-title -credits'>About</h2>
+            <figure />
+            <p>Alexander Pulido is a Full Stack developer who was born in Roma, studied in Venezuela and now lives and Work in Arequipa, Perú.
+            He loves to build web apps and his specialty is frontend development in javascript enviroments.</p>
+          </article>
+          <article class='legal'>
+            &#64; Alexander Pulido. All Rights Reserved.
+          </article>
+        </footer>
       </div>
     )
   }

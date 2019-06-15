@@ -1,23 +1,22 @@
-import { Vue } from 'vue-property-decorator'
+import { Vue, Prop } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import WorkTemplate from '../../../templates/pages/staticResume/experience/work'
-import {
-  Mutation
-} from 'vuex-class'
 
 @Component({
   name: 'Work'
 })
 export default class Work extends Vue {
+  @Prop() section!: string | undefined
   public activeDropdowns: any = {}
   public activeHovers: any = {}
+  public sectionSelected: string = 'fundacite'
+  public credits: boolean = false
   public $refs!: {
     character,
     movingBg1,
     movingBg
   }
-
-  public works: any = [
+  public works: any[] = [
     {
       from: '2014',
       to: '2015',
@@ -45,7 +44,7 @@ export default class Work extends Vue {
       description: 'Venezuelan contratist centered in web development.',
       jobs: [
         {
-          description: 'Major colaboration in projects from Concur Messaging, Inc. Some of them are:',
+          description: 'Major colaboration in projects from Concur Messaging, Inc. some of them are:',
           url: '',
           projects: [
             {
@@ -73,7 +72,7 @@ export default class Work extends Vue {
         {
           description: 'Major colaboration in the following projects:',
           url: '',
-          projects:[
+          projects: [
             {
               name: 'Dailydrip',
               url: 'https://www.dailydrip.com/',
@@ -110,7 +109,7 @@ export default class Work extends Vue {
               name: 'Agency Rocket',
               url: 'https://www.app.agencyrocket.com/',
               features: [
-                'Main frontend developer, implemented all the principal features off the app.'
+                'Main frontend developer of the project, implemented all the principal features off the app.'
               ]
             }
           ]
@@ -144,7 +143,7 @@ export default class Work extends Vue {
           url: 'https://v1siond.bitbucket.io/'
         },
         {
-          description: 'Spotify Search App (deprecated, needs api update)',
+          description: 'Spotify Search App ( deprecated, needs api update )',
           url: 'https://spotifyappsearch.herokuapp.com/'
         },
         {
@@ -153,7 +152,7 @@ export default class Work extends Vue {
         },
         {
           description: 'Bootstrap Course - Socios Creativos',
-          url: ''
+          url: 'https://www.socioscreativos.com/'
         },
         {
           description: 'PlayList Picker',
@@ -170,12 +169,69 @@ export default class Work extends Vue {
       ]
     }
   ]
-  public moveBackground (n, anim) {
-    console.log(this.$refs)
+
+  public toCamel = (s) => {
+    return s.replace(/([-_][a-z])/ig, ($1) => {
+      return $1.toUpperCase()
+        .replace('-', '')
+        .replace('_', '')
+    })
+  }
+  public moveBackground (n, anim, organization) {
+    const org = organization.toLowerCase().replace(/ /g, '-').replace(/[,.]/g, '')
+    this.sectionSelected = org
     this.$refs.character.className = `character -experience ${anim}`
     this.$refs.movingBg.style.left = `${n}%`
     this.$refs.movingBg1.style.left = `${n}%`
+    this.$router.replace(`/static-resume/experience/work/${org}`)
   }
+
+  public showDescription (organization) {
+    if (this.activeHovers[organization]) {
+      this.activeHovers = {}
+    } else {
+      this.$set(this.activeHovers, organization, true)
+    }
+  }
+  public openDropdown (project) {
+    if (this.activeDropdowns[project]) {
+      this.$set(this.activeDropdowns, project, !this.activeDropdowns[project])
+    } else {
+      this.$set(this.activeDropdowns, project, true)
+    }
+  }
+
+  public goToCredits () {
+    this.credits = true
+    this.$refs.movingBg.style.transition = 'all .5s'
+    this.$refs.movingBg1.style.transition = 'all .5s'
+    this.$refs.movingBg.style.left = '-300%'
+    this.$refs.movingBg1.style.left = `-300%`
+    setTimeout(() => {
+      this.$router.push('/credits')
+    }, 8000)
+  }
+
+  public mounted () {
+    if (this.section) {
+      this.sectionSelected = this.section.toLowerCase().replace(/ /g, '-').replace(/[,.]/g, '')
+      this.works.filter((work, index) => {
+        const org = work.organization.toLowerCase().replace(/ /g, '-').replace(/[,.]/g, '')
+        let animation = ''
+        if (org.includes('sys')) {
+          animation = 'experienceTwoNext'
+        } else if (org.includes('concur')) {
+          animation = 'experienceThreeNext'
+        } else if (org.includes('free')) {
+          animation = 'experienceFourNext'
+        }
+        if (org === this.sectionSelected) {
+          this.moveBackground(index * -100, animation, work.organization)
+        }
+      })
+    }
+  }
+
   public render (h) {
     return (
       <WorkTemplate
@@ -183,6 +239,12 @@ export default class Work extends Vue {
         moveBackground={this.moveBackground}
         activeDropdowns={this.activeDropdowns}
         activeHovers={this.activeHovers}
+        showDescription={this.showDescription}
+        openDropdown={this.openDropdown}
+        section={this.sectionSelected}
+        goToCredits={this.goToCredits}
+        credits={this.credits}
+        router={this.$router}
       />
     )
   }

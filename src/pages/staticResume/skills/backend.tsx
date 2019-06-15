@@ -87,6 +87,7 @@ export default class Backend extends Vue {
         transitionName={this.transitionName}
         nextUrl={this.nextUrl}
         prevUrl={this.prevUrl}
+        router={this.$router}
       />
     )
   }

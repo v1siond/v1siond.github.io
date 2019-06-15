@@ -21,7 +21,7 @@ export default class Abilities extends Vue {
   }
   public render (h) {
     return (
-      <AbilitiesTemplate />
+      <AbilitiesTemplate router={this.$router}/>
     )
   }
 }

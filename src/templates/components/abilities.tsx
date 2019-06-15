@@ -85,7 +85,7 @@ export default ({ props }: any) => {
         <span class='character'/>
       </section>
       <section class='user-panel'>
-      <a onClick={() => props.router.push('/static-resume/')} class='button -prev'>
+      <a onClick={() => props.router.push('/static-resume')} class='button -prev'>
         <i class='fas fa-angle-left' />
         Level Selection
       </a>

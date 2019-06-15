@@ -1,0 +1,22 @@
+.colaborators
+  flex(center, space-between)
+  list-style none
+  margin-bottom 3rem
+  width 100%
+  > .colaborator,
+  > .colaborator-job
+    width 100%
+    +media(mobile)
+      width 49%
+  > .colaborator,
+  > .colaborator a,
+  > .colaborator-job
+    color white
+    font-size 125%
+    line-height 150%
+    text-align left
+    +media(mobile)
+      text-align right
+  > .colaborator-job
+    +media(mobile)
+      text-align left

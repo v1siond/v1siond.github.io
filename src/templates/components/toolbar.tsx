@@ -42,15 +42,15 @@ export default ({ props }: any) => {
               { props.mobile && (
                 <li class='stat'>
                   <h3>World</h3>
-                  { props.getLevelNumber !== '_' && (
+                  { props.getLevelNumber !== '_' && props.getLevelName !== 'Credits' ? (
                     <p>{ props.getLevelNumber }: { props.getLevelName }</p>
-                  )}
+                  ) : (<p>{ props.getLevelName }</p>)}
                 </li>
               )}
               { props.mobile && (
                 <li class='stat'>
                   <h3>Time</h3>
-                  <p>{props.data.getTime}</p>
+                  <p>{props.methods.formatTime(props.data.getTime)}</p>
                 </li>
               )}
               <li class='stat' onClick={() => props.methods.openMenu()}>

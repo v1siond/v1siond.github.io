@@ -72,6 +72,7 @@ export default class LevelSelection extends Vue {
         methods={{
           levelSelected: this.levelSelected
         }}
+        router={this.$router}
       />
     )
   }

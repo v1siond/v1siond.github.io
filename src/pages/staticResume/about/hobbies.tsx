@@ -22,7 +22,7 @@ export default class Hobbies extends Vue {
   }
   public render (h) {
     return (
-      <HobbiesTemplate />
+      <HobbiesTemplate router={this.$router}/>
     )
   }
 }

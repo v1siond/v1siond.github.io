@@ -36,6 +36,53 @@
     animation fadeIn .5s forwards
     background lighten(black, 15%)
     opacity 0
+  &.-credits
+    background-color lighten(black, 15%)
+    height unset !important
+    max-height unset
+    overflow visible
+
+.footer
+  background lighten(black, 15%)
+  flex(center, center)
+  padding 4rem 1rem 1rem
+  > .about,
+  > .legal,
+  > .about > p
+    color white
+    font-size 115%
+    line-height 110%
+    text-shadow -.1rem 0 black, 0 .2rem black, .2rem 0 black, 0 -.1rem black
+  > .about,
+  > .legal
+    width 90%
+    +media(desktop)
+      width 60%
+  > .about
+    flex(center, center)
+    margin-bottom 2rem
+    > figure
+      background url('../images/alex.jpg') center center no-repeat
+      background-size cover
+      background-color lighten(black, 15%)
+      border .2rem solid white
+      border-radius 50%
+      height 6rem
+      margin 0 .5rem 1rem 0
+      padding-top .5rem
+      width 6rem
+      +media(mobile)
+        margin 0 .5rem 0 0
+    > p
+      text-align left
+      width 100%
+      +media(mobile)
+        max-width calc(100% - 7rem)
+  > .legal
+    font-size 150%
+
+a, button
+  cursor pointer
 
 .link
   color subtitleColor

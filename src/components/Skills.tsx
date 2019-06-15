@@ -54,6 +54,7 @@ export default class Skills extends Vue {
         transitionName={this.transition}
         nextUrl={this.nextUrl}
         prevUrl={this.prevUrl}
+        router={this.$router}
       />
     )
   }

@@ -4,32 +4,32 @@ export default ({ props }: any) => {
       <section class='parallax-background -levelSelection'>
         <article class='levels-selection'>
           <a
-            href='/static-resume/about'
+            onClick={() => props.router.push('/static-resume/about')}
             class='level -about'
             onmouseenter={() => props.methods.levelSelected('About')}
           >
             <h3>level 1: About</h3>
           </a>
           <a
-            href='/static-resume/skills'
-            class='level'
+            onClick={() => props.router.push('/static-resume/skills')}
+            class='level -skills'
             onmouseenter={() => props.methods.levelSelected('Skills')}
           >
-            <h3>level 2</h3>
+            <h3>level 2: Skills</h3>
           </a>
           <a
-            href='/static-resume/experience'
-            class='level'
+            onClick={() => props.router.push('/static-resume/experience')}
+            class='level -experience'
             onmouseenter={() => props.methods.levelSelected('Experience')}
           >
-            <h3>level 3</h3>
+            <h3>level 3: Experience</h3>
           </a>
           <a
-            href='/static-resume/publications'
-            class='level'
+            onClick={() => props.router.push('/credits')}
+            class='level -credits'
             onmouseenter={() => props.methods.levelSelected('Pubacations')}
           >
-            <h3>level 4</h3>
+            <h3>Credits</h3>
           </a>
         </article>
         <article class='background background-1'>
@@ -69,6 +69,7 @@ export default ({ props }: any) => {
           <span class='divisions' />
         </article>
         <article class='layerBottom'/>
+        <span class='character -live-and-work'/>
       </section>
     </main>
   )

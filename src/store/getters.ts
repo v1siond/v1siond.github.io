@@ -22,7 +22,7 @@ const getters: GetterTree<AppState, RootState> = {
     const { levelName } = state
     return levelName
   },
-  getTime (state): string {
+  getTime (state): number {
     const { time } = state
     return time
   }
