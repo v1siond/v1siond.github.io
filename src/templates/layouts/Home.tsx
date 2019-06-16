@@ -3,30 +3,30 @@ import Toolbar from '../../components/Toolbar'
 export default ({ props, children }: any) => {
   if (props && props.methods) {
     return (
-      <main class='section -intro'>
+      <main class='section -intro animated'>
         {children}
         <section class={`parallax-background ${props.animationClass}`}>
           <header class='game-options-text'>
-            <h1 class='game-title'>
+            <h1 class='game-title -home'>
               <p>Alexander Pulido</p>
             </h1>
             <span>
               <a
-                href='/interactive-resume'
+                onClick={() => props.router.push('/interactive-resume')}
                 class={props.interactive ? '-selected game-start-button' : 'game-start-button'}
                 onmouseenter={() => props.methods.buttonSelected('interactive')}
               >
-                Interactive Resume
+                Start Interactive Resume
               </a>
               <a
-                href='/static-resume'
+                onClick={() => props.router.push('/static-resume')}
                 class={props.static ? '-selected game-start-button' : 'game-start-button'}
                 onmouseenter={() => props.methods.buttonSelected('static')}
               >
-                Static Resume
+                Start Static Resume
               </a>
               <a
-                href='/blog'
+                onClick={() => props.router.push('/blog')}
                 class={props.blog ? '-selected game-start-button' : 'game-start-button'}
                 onmouseenter={() => props.methods.buttonSelected('blog')}
               >
@@ -38,8 +38,8 @@ export default ({ props, children }: any) => {
           <article class='background background-2'/>
           <article class='background background-3'/>
           <article class='layerBottom'/>
-          <article class='character'/>
-          <article class='character -jumpDownIntro'/>
+          <article ref='character1' class='character'/>
+          <article ref='character2' class='character -jumpDownIntro'/>
         </section>
       </main>
     )

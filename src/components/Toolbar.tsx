@@ -1,8 +1,9 @@
-import { Watch, Vue, Prop, Component } from 'vue-property-decorator'
+import { Vue, Prop, Component } from 'vue-property-decorator'
 import {
-  Getter
+  Getter, Mutation
 } from 'vuex-class'
 import ToolbarTemplate from '../templates/components/toolbar'
+import debounce from '../helpers/debounce'
 @Component({
   name: 'Toolbar'
 })
@@ -13,9 +14,13 @@ export default class Toolbar extends Vue {
   @Getter('getLevelNumber') public getLevelNumber: any
   @Getter('getLevelName') public getLevelName: any
   @Getter('getTime') public getTime: any
-  @Prop(Boolean) public blog!: boolean | false
-  @Prop(Boolean) public mobile!: boolean | false
+  @Getter('getSound') public getSound: any
+  @Mutation('setSound') public setSound: any
+  @Prop() public blog!: boolean | false
+  @Prop() public mobile!: boolean | false
+  @Prop() public playAudio!: any | undefined
   public showMenu: boolean = false
+  public sounds: object  = {}
   public logout () {
     localStorage.removeItem('token')
     this.$router.push('/login')
@@ -30,6 +35,10 @@ export default class Toolbar extends Vue {
     this.showMenu = !this.showMenu
   }
 
+  public pushRoute (route) {
+    this.openMenu()
+    this.$router.push(route)
+  }
   public formatTime () {
     const secNum = this.getTime
     let hours: any   = Math.floor(secNum / 3600)
@@ -46,7 +55,17 @@ export default class Toolbar extends Vue {
       seconds = `0${seconds}`
     }
     return `${minutes > 60 ? `${hours}:` : ''}${minutes}:${seconds}`
-}
+  }
+
+  public buttonSelected (type) {
+    if (this.getSound) {
+      this.playAudio(this.sounds, '/beep.wav', 'menu', 50)
+    }
+  }
+
+  public setDebouncedTime () {
+    debounce(this.setSound(!this.getSound), 300, this)
+  }
   public render (h: any) {
     return (
       <ToolbarTemplate
@@ -54,19 +73,23 @@ export default class Toolbar extends Vue {
         getLevelName={this.getLevelName}
         showMenu={this.showMenu}
         mobile={this.mobile}
+        pushRoute={this.pushRoute}
         data={{
           ...this.$props,
           getLogin: this.getLogin,
           getTitle: this.getTitle,
           getBack: this.getBack,
           getTime: this.getTime,
-          blog: this.blog
+          blog: this.blog,
+          getSound: this.getSound
         }}
         methods={{
           backHandler: this.goBack,
           logoutHandler: this.logout,
           formatTime: this.formatTime,
-          openMenu: this.openMenu
+          openMenu: this.openMenu,
+          setSound: this.setDebouncedTime,
+          buttonSelected: this.buttonSelected
         }}
       />
     )

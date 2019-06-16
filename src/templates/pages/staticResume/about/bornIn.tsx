@@ -39,7 +39,12 @@ export default ({ props }: any) => {
           <span class='divisions' />
           <span class='divisions' />
         </article>
-        <article class='layerBottom'/>
+        <article class='layerBottom'>
+          <span class='divisions' />
+          <span class='divisions' />
+          <span class='divisions' />
+          <span class='divisions' />
+        </article>
         <span class='character'/>
       </section>
       <section class='user-panel'>

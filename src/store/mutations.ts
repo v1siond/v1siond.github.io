@@ -19,6 +19,12 @@ const mutations: MutationTree<AppState> = {
   },
   setTime (state, value: number) {
     state.time = value
+  },
+  setSound (state, value: boolean) {
+    state.sound = value
+  },
+  setSounds (state, value: object) {
+    state.sounds = value
   }
 }
 

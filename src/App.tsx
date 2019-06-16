@@ -5,6 +5,7 @@ import {
   Getter, Mutation
 } from 'vuex-class'
 import Toolbar from './components/Toolbar'
+import SoundManager from 'soundmanager2'
 
 @Component({
   name: 'app'
@@ -13,19 +14,14 @@ export default class App extends Vue {
   @Getter('getLogin') public  getLogin: any
   @Mutation('setLogin') public  setLogin
   public  toolbarHeight: number = 55
-  public toolbarVisible: boolean = false
   public toolbarBlog: boolean = false
+  public soundManager = SoundManager.soundManager
   public mobile: boolean = false
   $refs!: {
     toolbar: HTMLFormElement
   }
 
   public checkLogin (): void {
-    if (this.$router.currentRoute.name === 'home') {
-      this.toolbarVisible = false
-    } else {
-      this.toolbarVisible = true
-    }
     if (this.$router.currentRoute.fullPath.includes('blog')) {
       this.toolbarBlog = true
     } else {
@@ -47,7 +43,28 @@ export default class App extends Vue {
     }
   }
 
+  public async playAudio (sounds, url: string, sound: string, vol: number = 20, loop: boolean = false) {
+    if (!sounds[sound]) {
+      this.$set(sounds, sound, await this.soundManager.createSound({
+        id: `${sound}Id`,
+        url,
+        autoLoad: true,
+        loops: loop ? 5 : 0,
+        volume: vol
+      }))
+      sounds[sound].stop()
+      sounds[sound].play()
+    } else {
+      sounds[sound].stop()
+      sounds[sound].play()
+    }
+  }
+
   public mounted () {
+    this.soundManager.setup({
+      debugMode: false,
+      flashVersion: 9
+    })
     this.checkLogin()
     this.checkToolbarHeight()
     window.addEventListener('resize', this.checkToolbarHeight)
@@ -65,8 +82,8 @@ export default class App extends Vue {
   public render (h: any) {
     return (
       <div id='app'>
-        { this.toolbarVisible && (<Toolbar mobile={this.mobile} blog={this.toolbarBlog || false} ref='toolbar' />) }
-        <router-view style={this.toolbarBlog ? `height: calc( 100vh - ${this.toolbarHeight}px);` : 'height: 100vh;'} />
+        <Toolbar playAudio={this.playAudio} mobile={this.mobile} blog={this.toolbarBlog || false} ref='toolbar' />
+        <router-view playAudio={this.playAudio} style={this.toolbarBlog ? `height: calc( 100vh - ${this.toolbarHeight}px);` : 'height: 100vh;'} />
         <footer class='footer'>
           <article class='about'>
             <h2 class='game-title -credits'>About</h2>

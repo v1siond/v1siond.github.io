@@ -1,25 +1,37 @@
-import { Vue } from 'vue-property-decorator'
+import { Mixins, Watch, Prop } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import HomeTemplate from '../templates/layouts/Home'
 import {
-  Mutation
+  Getter, Mutation
 } from 'vuex-class'
-import SoundManager from 'soundmanager2'
+import SoundMixing from '../pages/mixins/soundMixin'
 
 @Component({
   name: 'categories'
 })
-export default class Home extends Vue {
+export default class Home extends Mixins(SoundMixing) {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
   public stepsDuration: number = 15
-  public sounds: object  = {}
-  public soundManager = SoundManager.soundManager
-  public animationClass: string = '-'
+  public animationClass: string = '-intro animated'
+  public stepsOne: any = undefined
+  public jump: any = undefined
+  public walk2: any = undefined
+  public explosionTimeout: any = undefined
+  public listener = this.backgroundSound.bind(this)
   $refs!: {
     wind: any,
-    introMusic: any
+    introMusic: any,
+    character1: any,
+    character2: any
   }
+  public soundNames = [
+    'menu',
+    'wind',
+    'intro',
+    'step',
+    'jump'
+  ]
   public buttons: any = [
     {
       name: 'interactive',
@@ -36,22 +48,17 @@ export default class Home extends Vue {
   ]
 
   public explosion () {
-    setTimeout(() => {
-      this.playAudio('./Explosion1.mp3', 'explosion', 75)
-    }, 15850)
+    this.explosionTimeout = setTimeout(() => {
+      if (this.getSound) {
+        this.playAudio('./Explosion1.mp3', 'explosion', 75)
+      }
+    }, 16500)
   }
 
   public mounted () {
-    this.soundManager.setup({
-      debugMode: false,
-      flashVersion: 9,
-      onready: () => {
-        this.backroundSound()
-        window.addEventListener('resize', () => {
-          this.animationClass  = '-'
-          this.backroundSound()
-        })
-      }
+    this.soundManager.onready(() => {
+      this.backgroundSound()
+      window.addEventListener('resize', this.listener)
     })
   }
 
@@ -63,52 +70,72 @@ export default class Home extends Vue {
         button.status = false
       }
     })
-    this.playAudio('./beep.wav', 'menu', 50)
+    if (this.getSound) {
+      this.playAudio('./beep.wav', this.soundNames[0], 50)
+    }
   }
 
-  public backroundSound () {
+  public cleanIntervals () {
+    if (this.stepsOne) {
+      clearInterval(this.stepsOne)
+    }
+    if (this.explosionTimeout) {
+      clearInterval(this.explosionTimeout)
+    }
+    if (this.walk2) {
+      clearInterval(this.walk2)
+    }
+    if (this.jump) {
+      clearInterval(this.jump)
+    }
+    this.soundNames.map((sound) => {
+      if (this.sounds[sound]) {
+        this.sounds[sound].stop()
+        this.sounds[sound].destruct()
+      }
+    })
+  }
+
+  public backgroundSound () {
     this.animationClass  = '-intro'
-    this.playAudio('./wind_4.wav', 'wind', 40, true)
-    this.playAudio('./intro.mp3', 'intro', 65, true)
-    this.steps()
-    this.explosion()
+    if (this.getSound) {
+      this.cleanIntervals()
+      this.playAudio('./wind_4.wav', this.soundNames[1], 40, true)
+      this.playAudio('./intro.mp3', this.soundNames[2], 65, true)
+      this.steps()
+      this.explosion()
+    } else {
+      this.animationClass  = '-intro animated'
+      this.cleanIntervals()
+    }
+  }
+
+  public beforeDestroy () {
+    this.cleanIntervals()
+    window.removeEventListener('resize', this.listener)
   }
 
   public steps () {
     setTimeout(() => {
-      const vm = this
-      const stepsOne = setInterval(() => {
-        vm.playAudio('./stepstone_1.wav', 'step')
+      this.animationClass  = '-intro animated'
+      this.$refs.character1.className = 'character'
+      this.$refs.character2.className = 'character -jumpDownIntro'
+      this.stepsOne = setInterval(() => {
+        this.playAudio('./stepstone_1.wav', this.soundNames[3])
       }, 500)
-      const jump = setTimeout(() => {
-        vm.playAudio('./jumpStart.mp3', 'jump', 75)
-      }, 4000)
-      setTimeout(() => {
-        const stepsTwo = setInterval(() => {
-          vm.playAudio('./stepstone_1.wav', 'step')
+      this.jump = setTimeout(() => {
+        this.playAudio('./jumpStart.mp3', this.soundNames[4], 75)
+      }, 5000)
+      this.walk2 = setTimeout(() => {
+        const steepTwo = setInterval(() => {
+          this.playAudio('./stepstone_1.wav', this.soundNames[3])
         }, 500)
-        setTimeout(() => { clearInterval(stepsTwo) }, 5000)
-      }, 4500)
+        setTimeout(() => { clearInterval(steepTwo) }, 6000)
+      }, 5500)
       setTimeout(() => {
-        clearInterval(stepsOne)
-      }, 3990)
+        clearInterval(this.stepsOne)
+      }, 4990)
     }, 1000)
-  }
-
-  public async playAudio (url: string, sound: string, vol: number = 20, loop: boolean = false) {
-    if (!this.sounds[sound]) {
-      this.sounds[sound] = await this.soundManager.createSound({
-        id: `${sound}Id`,
-        url,
-        autoLoad: true,
-        loops: loop ? 5 : 0,
-        volume: vol
-      })
-      this.sounds[sound].play()
-    } else {
-      this.sounds[sound].stop()
-      this.sounds[sound].play()
-    }
   }
 
   render (h: any) {
@@ -120,14 +147,26 @@ export default class Home extends Vue {
         static={this.buttons[1].status}
         blog={this.buttons[2].status}
         animationClass={this.animationClass}
+        router={this.$router}
         methods={{
-          buttonSelected: this.buttonSelected,
-          playAudio: this.playAudio
+          buttonSelected: this.buttonSelected
         }}
-      >
-        <iframe src='./beep.wav' allow='autoplay' id='audio' style='display:none'></iframe>
-        <span ref='introMusic'/>
-      </HomeTemplate>
+      />
     )
   }
+
+  @Watch('getSound', { immediate: true, deep: true })
+    onSoundChange (newVal: any) {
+      this.animationClass  = '-intro'
+      this.cleanIntervals()
+      if (newVal === true) {
+        if (this.$refs.character1) {
+          this.$refs.character1.className = '-'
+        }
+        if (this.$refs.character2) {
+          this.$refs.character2.className = '-'
+        }
+      }
+      this.backgroundSound()
+    }
 }

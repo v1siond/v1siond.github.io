@@ -68,7 +68,12 @@ export default ({ props }: any) => {
           <span class='divisions' />
           <span class='divisions' />
         </article>
-        <article class='layerBottom'/>
+        <article class='layerBottom'>
+          <span class='divisions' />
+          <span class='divisions' />
+          <span class='divisions' />
+          <span class='divisions' />
+        </article>
         <span class='character -live-and-work'/>
       </section>
     </main>

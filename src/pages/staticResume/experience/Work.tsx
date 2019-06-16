@@ -1,16 +1,19 @@
-import { Vue, Prop } from 'vue-property-decorator'
+import { Mixins, Watch, Prop } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import WorkTemplate from '../../../templates/pages/staticResume/experience/work'
+import SoundMixing from '../../mixins/soundMixin'
 
 @Component({
   name: 'Work'
 })
-export default class Work extends Vue {
+export default class Work extends Mixins(SoundMixing) {
   @Prop() section!: string | undefined
   public activeDropdowns: any = {}
   public activeHovers: any = {}
   public sectionSelected: string = 'fundacite'
   public credits: boolean = false
+  public listener = this.backgroundSound.bind(this)
+  public experienceSound: string = 'experience'
   public $refs!: {
     character,
     movingBg1,
@@ -212,6 +215,23 @@ export default class Work extends Vue {
     }, 8000)
   }
 
+  public backgroundSound () {
+    if (this.getSound) {
+      this.playAudio('/ExperienceLevel.mp3', this.experienceSound, 40, true)
+    } else if (this.sounds[this.experienceSound]) {
+      this.cleanSounds()
+    }
+  }
+
+  public cleanSounds () {
+    this.sounds[this.experienceSound].stop()
+    this.sounds[this.experienceSound].destruct()
+  }
+
+  public beforeDestroy () {
+    window.removeEventListener('resize', this.listener)
+  }
+
   public mounted () {
     if (this.section) {
       this.sectionSelected = this.section.toLowerCase().replace(/ /g, '-').replace(/[,.]/g, '')
@@ -230,6 +250,10 @@ export default class Work extends Vue {
         }
       })
     }
+    this.soundManager.onready(() => {
+      this.backgroundSound()
+      window.addEventListener('resize', this.listener)
+    })
   }
 
   public render (h) {
@@ -248,4 +272,9 @@ export default class Work extends Vue {
       />
     )
   }
+
+  @Watch('getSound', { immediate: true, deep: true })
+    onSoundChange (newVal: any) {
+      this.backgroundSound()
+    }
 }

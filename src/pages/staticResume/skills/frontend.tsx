@@ -1,18 +1,21 @@
-import { Vue } from 'vue-property-decorator'
+import { Mixins, Watch } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import FrontendTemplate from '../../../components/Skills'
 import {
   Mutation
 } from 'vuex-class'
+import SoundMixing from '../../mixins/soundMixin'
 
 @Component({
   name: 'Frontend'
 })
-export default class Frontend extends Vue {
+export default class Frontend extends Mixins(SoundMixing) {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
+  public listener = this.backgroundSound.bind(this)
+  public skillsSound: string = 'skills'
   public current: number = 0
   public transitionName: string = 'fade'
   public show: boolean = false
@@ -131,13 +134,34 @@ export default class Frontend extends Vue {
     }
   ]
 
+  public backgroundSound () {
+    if (this.getSound) {
+      this.playAudio('/desert.mp3', this.skillsSound, 40, true)
+    } else if (this.sounds[this.skillsSound]) {
+      this.cleanSounds()
+    }
+  }
+
+  public cleanSounds () {
+    this.sounds[this.skillsSound].stop()
+    this.sounds[this.skillsSound].destruct()
+  }
+
+  public beforeDestroy () {
+    window.removeEventListener('resize', this.listener)
+  }
 
   public mounted () {
     this.setTitle('LVL-2.1: Frontend')
     this.setBack(true)
     this.setLevelNumber('2-1')
     this.setLevelName('Frontend')
+    this.soundManager.onready(() => {
+      this.backgroundSound()
+      window.addEventListener('resize', this.listener)
+    })
   }
+
   public render (h) {
     return (
       <FrontendTemplate
@@ -151,4 +175,9 @@ export default class Frontend extends Vue {
       />
     )
   }
+
+  @Watch('getSound', { immediate: true, deep: true })
+    onSoundChange (newVal: any) {
+      this.backgroundSound()
+    }
 }

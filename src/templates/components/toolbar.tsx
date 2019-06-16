@@ -32,10 +32,13 @@ export default ({ props }: any) => {
   } else {
     return (
       <nav class={`menu-top -game`}>
-        {props.showMenu && (<Menu openMenu={props.methods.openMenu}/>)}
+        {props.showMenu && (<Menu buttonSelected={props.methods.buttonSelected} formatTime={props.methods.formatTime} openMenu={props.methods.openMenu} pushRoute={props.pushRoute}/>)}
         {props.showMenu === false && (
           <section class='container'>
             <ul class='stats-list'>
+              <li class='stat'>
+                <i onClick={() => props.methods.setSound()} class={props.data.getSound ? 'fas fa-volume-up' : 'fas fa-volume-off'} />
+              </li>
               <li class='stat'>
                 <h3>Alex</h3>
               </li>
@@ -54,7 +57,7 @@ export default ({ props }: any) => {
                 </li>
               )}
               <li class='stat' onClick={() => props.methods.openMenu()}>
-                <a><i class='fa fa-bars '/></a>
+                <a onmouseenter={() => props.methods.buttonSelected()}><i class='fa fa-bars '/></a>
               </li>
             </ul>
           </section>

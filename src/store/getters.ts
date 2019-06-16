@@ -25,6 +25,14 @@ const getters: GetterTree<AppState, RootState> = {
   getTime (state): number {
     const { time } = state
     return time
+  },
+  getSound (state): boolean {
+    const { sound } = state
+    return sound
+  },
+  getSounds (state): object {
+    const { sounds } = state
+    return sounds
   }
 }
 

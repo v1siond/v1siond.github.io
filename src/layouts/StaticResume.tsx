@@ -1,4 +1,4 @@
-import { Vue } from 'vue-property-decorator'
+import { Vue, Prop } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import {
   Getter, Mutation
@@ -9,8 +9,8 @@ import {
 export default class StaticResume extends Vue {
   @Getter('getTime') public getTime: any
   @Mutation('setTime') public setTime
+  @Prop() playAudio!: any | undefined
   mounted () {
-    console.log('mounted')
     const vm = this
     setInterval(() => {
       vm.setTime(vm.getTime + 1)
@@ -18,7 +18,7 @@ export default class StaticResume extends Vue {
   }
   render (h) {
     return (
-      <router-view/>
+      <router-view playAudio={this.playAudio}/>
     )
   }
 }

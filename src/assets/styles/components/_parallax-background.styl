@@ -27,14 +27,15 @@
   > .background-6
     z-index 0
   &.-intro
-    animation earthquakeSm 0.5s 15.85s forwards
     background-color rgba(black, .8)
     background-size 100% 100%
     height 100%
-    +media(mobile)
-      animation earthquakeMd 0.5s 15.85s forwards
-    +media(desktop)
-      animation earthquake 0.5s 15.85s forwards
+    &.animated
+      animation earthquakeSm 0.5s 15.85s forwards
+      +media(mobile)
+        animation earthquakeMd 0.5s 15.85s forwards
+      +media(desktop)
+        animation earthquake 0.5s 15.85s forwards
     > .background
       top 0
     > .layerBottom
@@ -42,7 +43,7 @@
       background-size 100% 100%
       filter grayscale(50%)
     > .background-1
-      animation moveTreeTree 15s infinite alternate
+      animation moveTreeTree 10s infinite alternate
       background url('../../assets/images/band/2.png') center center no-repeat
       background-size 100% 100%
       filter grayscale(50%)
@@ -55,7 +56,7 @@
       mix-blend-mode multiply
       top 7.5%
     > .background-3
-      animation moveTreeTwo 15s infinite alternate
+      animation moveTreeTwo 25s infinite alternate
       background url('../../assets/images/band/6.png') center center no-repeat
       background-size 100% 100%
       filter grayscale(30%)
@@ -78,8 +79,14 @@
     > .background
       top 0
     > .layerBottom
-      background url('../../assets/images/forest/forestFloor2.png') center center no-repeat
-      background-size 100% 100%
+      animation moveLeft 150s infinite
+      flex(center, center)
+      width 400%
+      > .divisions
+        background url('../../assets/images/forest/forestFloor2.png') center center no-repeat
+        background-size 100% 100%
+        height 100%
+        width 25%
     > .background-1
       animation moveLeft 200s infinite
       > .divisions
@@ -414,8 +421,10 @@
       top 25%
       > .game-title
         left -15%
-        top 7.5%
+        top 5%
         font-size 50%
+        +media(desktop)
+          font-size 100%
     > .background-5
       background url('../../assets/images/hobbies/rails.png') center center no-repeat
       background-size 100% 100%
