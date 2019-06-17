@@ -12,8 +12,6 @@ import SoundMixing from '../mixins/soundMixin'
 export default class LevelSelection extends Mixins(SoundMixing) {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
-  public listener = this.backgroundSound.bind(this)
-  public levelSelectionSound: string = 'levelSelectionForest'
   public levels: any = [
     {
       name: 'About',
@@ -34,31 +32,14 @@ export default class LevelSelection extends Mixins(SoundMixing) {
   ]
 
   public backgroundSound () {
-    if (this.getSound) {
-      this.playAudio('/levelSelection.mp3', this.levelSelectionSound, 40, true)
-      this.playAudio('/wind_4.wav', 'wind', 40, true)
-    } else if (this.sounds[this.levelSelectionSound]) {
-      this.cleanSounds()
-    }
-  }
-
-  public cleanSounds () {
-    this.sounds[this.levelSelectionSound].stop()
-    this.sounds[this.levelSelectionSound].destruct()
-    this.sounds['wind'].stop()
-    this.sounds['wind'].destruct()
+    this.playAudio('levelselection')
+    this.playAudio('wind4')
   }
 
   public mounted () {
     this.setTitle('Level Selection')
     this.setBack(true)
     this.backgroundSound()
-    window.addEventListener('resize', this.listener)
-  }
-
-  public beforeDestroy () {
-    this.cleanSounds()
-    window.removeEventListener('resize', this.listener)
   }
 
   public levelSelected (type) {
@@ -69,7 +50,7 @@ export default class LevelSelection extends Mixins(SoundMixing) {
         level.status = false
       }
     })
-    this.playAudio('./beep.wav', 'menu', 50)
+    this.playAudio('beep')
   }
 
   public render (h: any) {

@@ -15,22 +15,11 @@ export default class Abilities extends Mixins(SoundMixing) {
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
   public listener = this.backgroundSound.bind(this)
-  public abilitiesSound: string = 'lsdForest'
+  public abilitiesSound: string = 'deeper'
 
   public backgroundSound () {
-    if (this.getSound) {
-      this.playAudio('/Deeper.mp3', this.abilitiesSound, 40, true)
-      this.playAudio('/wind_4.wav', 'wind', 40, true)
-    } else if (this.sounds[this.abilitiesSound]) {
-      this.cleanSounds()
-    }
-  }
-
-  public cleanSounds () {
-    this.sounds[this.abilitiesSound].stop()
-    this.sounds[this.abilitiesSound].destruct()
-    this.sounds['wind'].stop()
-    this.sounds['wind'].destruct()
+    this.playAudio(this.abilitiesSound)
+    this.playAudio('wind4')
   }
 
   public beforeDestroy () {

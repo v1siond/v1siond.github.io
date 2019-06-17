@@ -57,15 +57,14 @@ export default class Toolbar extends Vue {
     return `${minutes > 60 ? `${hours}:` : ''}${minutes}:${seconds}`
   }
 
-  public buttonSelected (type) {
-    if (this.getSound) {
-      this.playAudio(this.sounds, '/beep.wav', 'menu', 50)
-    }
+  public buttonSelected () {
+    this.playAudio('beep')
   }
 
   public setDebouncedTime () {
     debounce(this.setSound(!this.getSound), 300, this)
   }
+
   public render (h: any) {
     return (
       <ToolbarTemplate

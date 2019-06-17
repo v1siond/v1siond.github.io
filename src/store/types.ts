@@ -10,5 +10,5 @@ export interface AppState {
   levelName: string,
   time: number,
   sound: boolean,
-  sounds: object
+  sounds: any
 }

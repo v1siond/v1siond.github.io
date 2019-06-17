@@ -14,8 +14,6 @@ export default class Frontend extends Mixins(SoundMixing) {
   @Mutation('setBack') public setBack
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
-  public listener = this.backgroundSound.bind(this)
-  public skillsSound: string = 'skills'
   public current: number = 0
   public transitionName: string = 'fade'
   public show: boolean = false
@@ -135,20 +133,7 @@ export default class Frontend extends Mixins(SoundMixing) {
   ]
 
   public backgroundSound () {
-    if (this.getSound) {
-      this.playAudio('/desert.mp3', this.skillsSound, 40, true)
-    } else if (this.sounds[this.skillsSound]) {
-      this.cleanSounds()
-    }
-  }
-
-  public cleanSounds () {
-    this.sounds[this.skillsSound].stop()
-    this.sounds[this.skillsSound].destruct()
-  }
-
-  public beforeDestroy () {
-    window.removeEventListener('resize', this.listener)
+    this.playAudio('desert')
   }
 
   public mounted () {
@@ -156,10 +141,7 @@ export default class Frontend extends Mixins(SoundMixing) {
     this.setBack(true)
     this.setLevelNumber('2-1')
     this.setLevelName('Frontend')
-    this.soundManager.onready(() => {
-      this.backgroundSound()
-      window.addEventListener('resize', this.listener)
-    })
+    this.backgroundSound()
   }
 
   public render (h) {

@@ -14,35 +14,17 @@ export default class Hobbies extends Mixins(SoundMixing) {
   @Mutation('setBack') public setBack
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
-  public listener = this.backgroundSound.bind(this)
-  public hobbiesSound: string = 'hobbies'
 
   public backgroundSound () {
-    if (this.getSound) {
-      this.playAudio('/hobbiesSong.mp3', this.hobbiesSound, 40, true)
-    } else if (this.sounds[this.hobbiesSound]) {
-      this.cleanSounds()
-    }
+    this.playAudio('hobbiessong')
   }
 
-  public cleanSounds () {
-    this.sounds[this.hobbiesSound].stop()
-    this.sounds[this.hobbiesSound].destruct()
-  }
-
-  public beforeDestroy () {
-    this.cleanSounds()
-    window.removeEventListener('resize', this.listener)
-  }
   public mounted () {
     this.setTitle('LVL 1-4: Hobbies')
     this.setBack(true)
     this.setLevelNumber('1-4')
     this.setLevelName('Hobbies')
-    this.soundManager.onready(() => {
-      this.backgroundSound()
-      window.addEventListener('resize', this.listener)
-    })
+    this.backgroundSound()
   }
 
   public render (h) {

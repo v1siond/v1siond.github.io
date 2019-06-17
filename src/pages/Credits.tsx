@@ -1,8 +1,8 @@
-import { Vue } from 'vue-property-decorator'
+import { Vue, Prop, Watch } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import CreditsTemplate from '../templates/pages/credits'
 import {
-  Mutation
+  Getter, Mutation
 } from 'vuex-class'
 
 @Component({
@@ -11,8 +11,11 @@ import {
 export default class Credits extends Vue {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
+  @Getter('getSound') public getSound
+  @Getter('getSounds') public getSounds
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
+  @Prop() public playAudio!: any | undefined
   public colaborators: any = [
     {
       name: 'Alexander Pulido',
@@ -187,12 +190,20 @@ export default class Credits extends Vue {
       url: 'https://www.smoothterminal.com/courses/graphql-zero-to-awesome/lessons/implement-a-vue-client-for-a-graphql-forum'
     }
   ]
+
+  public backgroundSound () {
+    this.playAudio('intro')
+    this.playAudio('wind4')
+  }
+
   public mounted () {
+    this.backgroundSound()
     this.setTitle('Credits')
     this.setBack(true)
     this.setLevelNumber('')
     this.setLevelName('Credits')
   }
+
   public render (h) {
     return (
       <CreditsTemplate
@@ -201,4 +212,9 @@ export default class Credits extends Vue {
       />
     )
   }
+
+  @Watch('getSound', { immediate: true, deep: true })
+    onSoundChange (newVal: any) {
+      this.backgroundSound()
+    }
 }

@@ -14,24 +14,9 @@ export default class LiveAndWork extends Mixins(SoundMixing) {
   @Mutation('setBack') public setBack
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
-  public listener = this.backgroundSound.bind(this)
-  public liveAndWorkSound: string = 'wind'
 
   public backgroundSound () {
-    if (this.getSound) {
-      this.playAudio('/wind_4.wav', this.liveAndWorkSound, 40, true)
-    } else if (this.sounds[this.liveAndWorkSound]) {
-      this.cleanSounds()
-    }
-  }
-
-  public cleanSounds () {
-    this.sounds[this.liveAndWorkSound].stop()
-    this.sounds[this.liveAndWorkSound].destruct()
-  }
-
-  public beforeDestroy () {
-    window.removeEventListener('resize', this.listener)
+    this.playAudio('wind4')
   }
 
   public mounted () {
@@ -39,10 +24,7 @@ export default class LiveAndWork extends Mixins(SoundMixing) {
     this.setBack(true)
     this.setLevelNumber('1-3')
     this.setLevelName('Live and Work')
-    this.soundManager.onready(() => {
-      this.backgroundSound()
-      window.addEventListener('resize', this.listener)
-    })
+    this.backgroundSound()
   }
 
   public render (h) {

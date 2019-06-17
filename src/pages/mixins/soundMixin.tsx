@@ -1,44 +1,141 @@
 import { Vue } from 'vue-property-decorator'
 import Component from 'vue-class-component'
-import SoundManager from 'soundmanager2'
+import {Howl, Howler} from 'howler'
 import {
-  Getter
+  Getter, Mutation
 } from 'vuex-class'
 
 @Component
 export default class LevelSelection extends Vue {
   @Getter('getSound') public getSound
-  public soundManager = SoundManager.soundManager
-  public soundNames: any = []
-  public sounds: object = {}
+  @Getter('getSounds') public getSounds
+  @Mutation('setSounds') public setSounds
+  public songNames = [
+    'levelselection',
+    'beep',
+    'deeper',
+    'desert',
+    'experiencelevel',
+    'explosion1',
+    'hobbiessong',
+    'intro',
+    'jumpstart',
+    'stepstone1',
+    'tarantella',
+    'wind4'
+  ]
+  public sounds: any = [
+    {
+      src: '/levelSelection.mp3',
+      loop: true,
+      volume: 0.35,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/wind_4.wav',
+      loop: true,
+      volume: 0.2,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/intro.mp3',
+      loop: true,
+      volume: 0.45,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/stepstone_1.wav',
+      loop: false,
+      volume: 0.2,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/jumpStart.mp3',
+      loop: false,
+      volume: 0.75,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/Deeper.mp3',
+      loop: true,
+      volume: 0.35,
+      preload: true,
+      rate: 0.75
+    },
+    {
+      src: '/tarantella.mp3',
+      loop: true,
+      volume: 0.35,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/hobbiesSong.mp3',
+      loop: true,
+      volume: 0.35,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/desert.mp3',
+      loop: true,
+      volume: 0.35,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/beep.wav',
+      loop: false,
+      volume: 0.75,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/ExperienceLevel.mp3',
+      loop: true,
+      volume: 0.35,
+      preload: true,
+      rate: 1
+    },
+    {
+      src: '/Explosion1.mp3',
+      loop: false,
+      volume: 0.65,
+      preload: true,
+      rate: 1
+    }
+  ]
 
-  public mounted () {
-    this.soundManager.setup({
-      debugMode: false,
-      flashVersion: 9
-    })
+  beforeMount () {
+    if (!this.getSounds) {
+      const SoundsArray = {}
+      this.sounds.map((sound) => {
+        const soundName = sound.src.toLowerCase().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '').replace('wav', '').replace('mp3', '')
+        const objectSpound = new Howl(sound)
+        SoundsArray[soundName] = objectSpound
+      })
+      this.setSounds(SoundsArray)
+    }
   }
 
-  public async playAudio (url: string, sound: string, vol: number = 20, loop: boolean = false) {
+  public async playAudio (sound: string) {
     if (this.getSound) {
-      if (!this.sounds[sound]) {
-        this.soundNames.push(sound)
-        this.sounds[sound] = await this.soundManager.createSound({
-          id: `${sound}Id`,
-          url,
-          autoLoad: true,
-          loops: loop ? 5 : 0,
-          volume: vol
-        })
-        this.sounds[sound].start()
-      } else {
-        this.sounds[sound].stop()
-        this.sounds[sound].start()
+      if (this.getSounds) {
+        this.getSounds[sound].play()
       }
+    } else if (this.getSounds && this.getSounds[sound]) {
+      this.getSounds[sound].stop()
     }
   }
 
   public beforeDestroy () {
-    this.soundManager.reboot()
+    this.songNames.map((soundName) => {
+      this.getSounds[soundName].stop()
+    })
   }
 }

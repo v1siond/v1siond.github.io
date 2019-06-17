@@ -8,7 +8,7 @@ const state: AppState = {
   levelName: '_',
   time: 0,
   sound: false,
-  sounds: {}
+  sounds: undefined
 }
 
 export default state

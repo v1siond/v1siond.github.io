@@ -1,21 +1,20 @@
 import Component from 'vue-class-component'
-import { Watch, Vue } from 'vue-property-decorator'
+import { Watch, Mixins } from 'vue-property-decorator'
 import './assets/styles/app.styl'
 import {
   Getter, Mutation
 } from 'vuex-class'
 import Toolbar from './components/Toolbar'
-import SoundManager from 'soundmanager2'
+import SoundMixing from './pages/mixins/soundMixin'
 
 @Component({
   name: 'app'
 })
-export default class App extends Vue {
+export default class App extends Mixins(SoundMixing) {
   @Getter('getLogin') public  getLogin: any
   @Mutation('setLogin') public  setLogin
   public  toolbarHeight: number = 55
   public toolbarBlog: boolean = false
-  public soundManager = SoundManager.soundManager
   public mobile: boolean = false
   $refs!: {
     toolbar: HTMLFormElement
@@ -43,28 +42,7 @@ export default class App extends Vue {
     }
   }
 
-  public async playAudio (sounds, url: string, sound: string, vol: number = 20, loop: boolean = false) {
-    if (!sounds[sound]) {
-      this.$set(sounds, sound, await this.soundManager.createSound({
-        id: `${sound}Id`,
-        url,
-        autoLoad: true,
-        loops: loop ? 5 : 0,
-        volume: vol
-      }))
-      sounds[sound].stop()
-      sounds[sound].play()
-    } else {
-      sounds[sound].stop()
-      sounds[sound].play()
-    }
-  }
-
   public mounted () {
-    this.soundManager.setup({
-      debugMode: false,
-      flashVersion: 9
-    })
     this.checkLogin()
     this.checkToolbarHeight()
     window.addEventListener('resize', this.checkToolbarHeight)
@@ -102,6 +80,10 @@ export default class App extends Vue {
   @Watch('$route', { immediate: true, deep: true })
     onUrlChange (newVal: any) {
       this.checkLogin()
+      if (this.getSounds) {
+        this.getSounds.intro.stop()
+        this.getSounds.wind4.stop()
+      }
     }
 
 }

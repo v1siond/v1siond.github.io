@@ -12,8 +12,6 @@ export default class Work extends Mixins(SoundMixing) {
   public activeHovers: any = {}
   public sectionSelected: string = 'fundacite'
   public credits: boolean = false
-  public listener = this.backgroundSound.bind(this)
-  public experienceSound: string = 'experience'
   public $refs!: {
     character,
     movingBg1,
@@ -216,20 +214,7 @@ export default class Work extends Mixins(SoundMixing) {
   }
 
   public backgroundSound () {
-    if (this.getSound) {
-      this.playAudio('/ExperienceLevel.mp3', this.experienceSound, 40, true)
-    } else if (this.sounds[this.experienceSound]) {
-      this.cleanSounds()
-    }
-  }
-
-  public cleanSounds () {
-    this.sounds[this.experienceSound].stop()
-    this.sounds[this.experienceSound].destruct()
-  }
-
-  public beforeDestroy () {
-    window.removeEventListener('resize', this.listener)
+    this.playAudio('experiencelevel')
   }
 
   public mounted () {
@@ -250,10 +235,7 @@ export default class Work extends Mixins(SoundMixing) {
         }
       })
     }
-    this.soundManager.onready(() => {
-      this.backgroundSound()
-      window.addEventListener('resize', this.listener)
-    })
+    this.backgroundSound()
   }
 
   public render (h) {
