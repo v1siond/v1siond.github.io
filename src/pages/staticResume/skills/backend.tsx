@@ -1,15 +1,14 @@
-import { Mixins, Watch } from 'vue-property-decorator'
+import { Vue, Watch } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import BackendTemplate from '../../../components/Skills'
 import {
   Mutation
 } from 'vuex-class'
-import SoundMixing from '../../mixins/soundMixin'
 
 @Component({
   name: 'Backend'
 })
-export default class Backend extends Mixins(SoundMixing) {
+export default class Backend extends Vue {
   @Mutation('setTitle') public setTitle
   @Mutation('setBack') public setBack
   @Mutation('setLevelNumber') public setLevelNumber
@@ -72,16 +71,11 @@ export default class Backend extends Mixins(SoundMixing) {
     }
   ]
 
-  public backgroundSound () {
-    this.playAudio('desert')
-  }
-
   public mounted () {
     this.setTitle('LVL-2.2: Backend')
     this.setBack(true)
     this.setLevelNumber('2-2')
     this.setLevelName('Backend')
-    this.backgroundSound()
   }
 
   public render (h) {
@@ -97,9 +91,4 @@ export default class Backend extends Mixins(SoundMixing) {
       />
     )
   }
-
-  @Watch('getSound', { immediate: true, deep: true })
-    onSoundChange (newVal: any) {
-      this.backgroundSound()
-    }
 }

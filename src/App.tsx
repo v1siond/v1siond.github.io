@@ -43,6 +43,7 @@ export default class App extends Mixins(SoundMixing) {
   }
 
   public mounted () {
+    console.log(process.env)
     this.checkLogin()
     this.checkToolbarHeight()
     window.addEventListener('resize', this.checkToolbarHeight)
@@ -81,8 +82,11 @@ export default class App extends Mixins(SoundMixing) {
     onUrlChange (newVal: any) {
       this.checkLogin()
       if (this.getSounds) {
-        this.getSounds.intro.stop()
-        this.getSounds.wind4.stop()
+        this.songNames.map((soundName) => {
+          if (!((newVal.name === 'Work' && soundName === 'experiencelevel') || ((newVal.name === 'frontend' || newVal.name === 'backend') && soundName === 'desert')) ) {
+            this.getSounds[soundName].stop()
+          }
+        })
       }
     }
 

@@ -4,6 +4,7 @@ import CreditsTemplate from '../templates/pages/credits'
 import {
   Getter, Mutation
 } from 'vuex-class'
+import sgMail from '@sendgrid/mail'
 
 @Component({
   name: 'Credits'
@@ -16,6 +17,9 @@ export default class Credits extends Vue {
   @Mutation('setLevelNumber') public setLevelNumber
   @Mutation('setLevelName') public setLevelName
   @Prop() public playAudio!: any | undefined
+  public email: string = ''
+  public subject: string = ''
+  public message: string = ''
   public colaborators: any = [
     {
       name: 'Alexander Pulido',
@@ -41,11 +45,23 @@ export default class Credits extends Vue {
     },
     {
       name: 'Eon',
-      job: 'Music Ambientation'
+      job: 'Music Ambientation for Experience and Hobbies levels',
+      url: 'https://www.facebook.com/Enlighten-Our-Nature-EON-357583141013558/'
     },
     {
       name: 'Drakhen',
-      job: 'Music Ambientation'
+      job: 'Music Ambientation for Home, Credits and Skills levels.',
+      url: 'https://www.facebook.com/Drakhenbanda/'
+    },
+    {
+      name: 'Tanner Helland',
+      job: 'Music Ambientation for Level Selection screen and Abilities level.',
+      url: 'http://www.tannerhelland.com'
+    },
+    {
+      name: '8notes.com',
+      job: 'Music Ambientation for Born In level',
+      url: 'https://www.8notes.com'
     },
     {
       name: 'Game Dev Market',
@@ -191,6 +207,26 @@ export default class Credits extends Vue {
     }
   ]
 
+  public sendEmail () {
+    console.log(process.env.VUE_APP_SENGRID_API_KEY)
+    sgMail.setApiKey(process.env.VUE_APP_SENGRID_API_KEY || '')
+    console.log(sgMail)
+    const msg = {
+      to: 'alexanderpulido81@gmail.com',
+      from: this.email,
+      subject: this.subject,
+      text: this.message
+    }
+    console.log(msg)
+    sgMail.send(msg).then(response => {
+      console.log(response)
+    })
+  }
+
+  sync (prop, value) {
+    this[prop] = value
+  }
+
   public backgroundSound () {
     this.playAudio('intro')
     this.playAudio('wind4')
@@ -209,6 +245,11 @@ export default class Credits extends Vue {
       <CreditsTemplate
         colaborators={this.colaborators}
         publishedContent={this.publishedContent}
+        sync={this.sync}
+        email={this.email}
+        subject={this.subject}
+        message={this.message}
+        sendEmail={this.sendEmail}
       />
     )
   }

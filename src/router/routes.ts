@@ -94,7 +94,7 @@ export default [
           },
           {
             component: () => import('../pages/staticResume/skills/frontend'),
-            name: 'bornIn',
+            name: 'frontend',
             path: '/static-resume/skills/frontend',
             props: true
           },

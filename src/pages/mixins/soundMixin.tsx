@@ -9,7 +9,9 @@ import {
 export default class LevelSelection extends Vue {
   @Getter('getSound') public getSound
   @Getter('getSounds') public getSounds
+  @Getter('playAudio') public playAudio
   @Mutation('setSounds') public setSounds
+  @Mutation('setPlayAudio') public setPlayAudio
   public songNames = [
     'levelselection',
     'beep',
@@ -121,11 +123,14 @@ export default class LevelSelection extends Vue {
       })
       this.setSounds(SoundsArray)
     }
+    if (!this.playAudio) {
+      this.setPlayAudio(this.playAudioFunction)
+    }
   }
 
-  public async playAudio (sound: string) {
+  public async playAudioFunction (sound: string) {
     if (this.getSound) {
-      if (this.getSounds) {
+      if (this.getSounds && this.getSounds[sound] && this.getSounds[sound]._sounds[0]._paused) {
         this.getSounds[sound].play()
       }
     } else if (this.getSounds && this.getSounds[sound]) {

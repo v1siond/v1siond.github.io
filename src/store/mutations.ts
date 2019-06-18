@@ -25,6 +25,9 @@ const mutations: MutationTree<AppState> = {
   },
   setSounds (state, value: object) {
     state.sounds = value
+  },
+  setPlayAudio (state, value: any) {
+    state.playAudio = value
   }
 }
 

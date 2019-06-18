@@ -74,7 +74,6 @@ export default ({ props }: any) => {
           <span class='divisions' />
           <span class='divisions' />
         </article>
-        <span class='character -live-and-work'/>
       </section>
     </main>
   )

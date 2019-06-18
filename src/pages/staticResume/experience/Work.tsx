@@ -1,13 +1,17 @@
-import { Mixins, Watch, Prop } from 'vue-property-decorator'
+import { Vue, Watch, Prop } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import WorkTemplate from '../../../templates/pages/staticResume/experience/work'
-import SoundMixing from '../../mixins/soundMixin'
+import {
+  Getter
+} from 'vuex-class'
 
 @Component({
   name: 'Work'
 })
-export default class Work extends Mixins(SoundMixing) {
+export default class Work extends Vue {
   @Prop() section!: string | undefined
+  @Getter('playAudio') public playAudio
+  @Getter('getSound') public getSound
   public activeDropdowns: any = {}
   public activeHovers: any = {}
   public sectionSelected: string = 'fundacite'
@@ -213,10 +217,6 @@ export default class Work extends Mixins(SoundMixing) {
     }, 8000)
   }
 
-  public backgroundSound () {
-    this.playAudio('experiencelevel')
-  }
-
   public mounted () {
     if (this.section) {
       this.sectionSelected = this.section.toLowerCase().replace(/ /g, '-').replace(/[,.]/g, '')
@@ -235,7 +235,7 @@ export default class Work extends Mixins(SoundMixing) {
         }
       })
     }
-    this.backgroundSound()
+    this.playAudio('experiencelevel')
   }
 
   public render (h) {
@@ -257,6 +257,6 @@ export default class Work extends Mixins(SoundMixing) {
 
   @Watch('getSound', { immediate: true, deep: true })
     onSoundChange (newVal: any) {
-      this.backgroundSound()
+      this.playAudio('experiencelevel')
     }
 }

@@ -83,44 +83,25 @@
       flex(center, center)
       width 400%
       > .divisions
-        background url('../../assets/images/forest/forestFloor2.png') center center no-repeat
-        background-size 100% 100%
         height 100%
         width 25%
     > .background-1
-      animation moveLeft 200s infinite
+      animation planetTravel 360s infinite
       > .divisions
-        background url('../../assets/images/forest/forestFloor1.png') center center no-repeat
-        background-size 100% 100%
-      bottom 0
-      height 5rem
-      top unset
-      z-index 3
+        background url('../../assets/images/forest/trees1.png') bottom right no-repeat
+        background-size 35%
     > .background-2
-      animation moveLeft 40s infinite forwards
+      animation planetTravelNegavtive 396s infinite
       > .divisions
-        background url('../../assets/images/forest/trees1.png') center center
-        background-size 100% 100%
-      left -1%
-      top 0
+        background url('../../assets/images/forest/trees2.png') top left no-repeat
+        background-size 25%
     > .background-3
-      animation moveLeft 125s infinite
-      > .divisions
-        background url('../../assets/images/forest/trees2.png') center center
-        background-size 100% 100%
-    > .background-4
       animation moveLeft 175s infinite
       > .divisions
         background url('../../assets/images/forest/treesFake.png') center center
         background-size 100% 100%
         top 0
-    > .background-5
-      animation moveLeft 125s infinite
-      > .divisions
-        background url('../../assets/images/forest/treesFake2.png') center center
-        background-size 100% 100%
-      top 0
-    > .background-6
+    > .background-4
       animation moveLeft 350s infinite
       height 90%
       > .divisions
@@ -302,6 +283,7 @@
         background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_2.png') center center no-repeat
         background-size 100% 100%
     > .background-2
+      animation moveLeft 125s infinite
       > .divisions
         background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_3.png') center center no-repeat
         background-size 100% 100%
@@ -337,17 +319,20 @@
       > .divisions
         background unset
     > .layerBottom
+      background lighten(green, 15%)
       animation emergeFlor .5s .75s forwards
       bottom -100%
       mix-blend-mode multiply
-      height 15%
+      height 14%
     > .background-1
       animation emerge .5s 1.7s forwards
       bottom -100%
       height 37.5%
       left unset
       right 20%
+      top unset
       width 20%
+      z-index 3
       &:before
         background url('../../assets/images/colosseum/church.png') center center no-repeat
         background-size 100% 100%
@@ -368,16 +353,21 @@
         height 100%
         width 100%
     > .background-3
+      animation moveLeft 125s infinite
       > .divisions
         background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_3.png') center center no-repeat
         background-size 100% 100%
-    > .background-5
-      > .divisions
-        background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_1.png') center center no-repeat
-        background-size 100% 100%
     > .background-4
+      animation moveLeft 175s infinite
       > .divisions
         background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_2.png') center center no-repeat
+        background-size 100% 100%
+        top 0
+    > .background-5
+      animation moveLeft 125s infinite
+      top 0
+      > .divisions
+        background url('../../assets/images/peruRepresentation/Mountains/layers/clouds_1.png') center center no-repeat
         background-size 100% 100%
     > .background-6
       animation emerge .5s 2.2s forwards

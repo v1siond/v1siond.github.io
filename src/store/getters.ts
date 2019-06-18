@@ -33,6 +33,10 @@ const getters: GetterTree<AppState, RootState> = {
   getSounds (state): object {
     const { sounds } = state
     return sounds
+  },
+  playAudio (state) {
+    const { playAudio } = state
+    return playAudio
   }
 }
 

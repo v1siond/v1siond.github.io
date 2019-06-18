@@ -50,11 +50,27 @@ export default ({ props }: any) => {
           Contact
         </h2>
         <form class='contact-form'>
-          <input type='email' placeholder='Email'/>
-          <input type='text' placeholder='Subject'/>
-          <textarea name='message' cols='5' rows='10' placeholder='Message' />
-          <button class='button'>Send message</button>
+          <input
+            on-input={(e) => props.sync('email', e.target.value)}
+            type='email'
+            placeholder='Email'
+            required
+          />
+          <input
+            on-input={(e) => props.sync('subject', e.target.value)}
+            type='text'
+            placeholder='Subject'
+            required
+          />
+          <textarea
+            on-input={(e) => props.sync('message', e.target.value)}
+            name='message'
+            cols='5' rows='10'
+            placeholder='Message'
+            required
+          />
         </form>
+        <a class='button' onClick={() => props.sendEmail()}>Send message</a>
         <article class='contact-information'>
           <a><i class='fab fa-facebook' />Facebook</a>
           <a><i class='fab fa-github' />Github</a>

@@ -72,21 +72,27 @@ export default class Home extends Vue {
   public cleanIntervals () {
     if (this.stepsOne) {
       clearInterval(this.stepsOne)
+      this.stepsOne = undefined
     }
     if (this.explosionTimeout) {
       clearInterval(this.explosionTimeout)
+      this.explosionTimeout = undefined
     }
     if (this.walk2) {
       clearInterval(this.walk2)
+      this.walk2 = undefined
     }
     if (this.jump) {
       clearInterval(this.jump)
+      this.jump = undefined
     }
     if (this.walk2Internal) {
       clearInterval(this.walk2Internal)
+      this.walk2Internal = undefined
     }
     if (this.stepsG) {
       clearInterval(this.stepsG)
+      this.stepsG = undefined
     }
   }
 

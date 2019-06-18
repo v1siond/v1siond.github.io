@@ -3,6 +3,7 @@ import App from './App'
 import router from './router'
 import apolloProvider from './graphql/client'
 import store from './store'
+import 'babel-polyfill'
 
 Vue.config.productionTip = false
 
