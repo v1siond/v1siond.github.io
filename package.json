@@ -2,8 +2,13 @@
   "name": "asdaq",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.4.0",
+    "yarn": "1.16.0",
+    "npm": "6.9.0"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
