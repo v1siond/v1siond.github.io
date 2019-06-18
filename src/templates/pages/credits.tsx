@@ -69,8 +69,8 @@ export default ({ props }: any) => {
             placeholder='Message'
             required
           />
+          <a class='button' onClick={() => props.sendEmail()}>Send message</a>
         </form>
-        <a class='button' onClick={() => props.sendEmail()}>Send message</a>
         <article class='contact-information'>
           <a><i class='fab fa-facebook' />Facebook</a>
           <a><i class='fab fa-github' />Github</a>

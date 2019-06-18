@@ -1,8 +1,11 @@
 .contact-form
+  background-color rgba(lighten(black, 15%), .75)
   border .2rem solid white
   flex(center, center)
   max-width 90%
-  padding 1.5rem
+  padding 2rem
+  position relative
+  z-index 10
   +media(mobile)
     max-width 80%
   +media(desktop)
@@ -12,12 +15,17 @@
     background-color lighten(black, 15%)
     border .01rem solid white
     color white
-    font-size 100%
+    font-size 150%
     margin-bottom 1rem
-    padding .25rem
+    padding .5rem
     text-shadow -.1rem 0 black, 0 .2rem black, .2rem 0 black, 0 -.1rem black
     width 100%
   > textarea
     height 12rem
     overflow auto
     resize none
+  .link
+    color white
+    font-size 150%
+    padding .5rem
+    text-shadow -.1rem 0 black, 0 .2rem black, .2rem 0 black, 0 -.1rem black

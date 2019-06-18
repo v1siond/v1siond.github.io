@@ -208,19 +208,7 @@ export default class Credits extends Vue {
   ]
 
   public sendEmail () {
-    console.log(process.env.VUE_APP_SENGRID_API_KEY)
-    sgMail.setApiKey(process.env.VUE_APP_SENGRID_API_KEY || '')
-    console.log(sgMail)
-    const msg = {
-      to: 'alexanderpulido81@gmail.com',
-      from: this.email,
-      subject: this.subject,
-      text: this.message
-    }
-    console.log(msg)
-    sgMail.send(msg).then(response => {
-      console.log(response)
-    })
+    window.open(`mailto:${this.email}?subject=${this.subject}&body=${this.message}`)
   }
 
   sync (prop, value) {

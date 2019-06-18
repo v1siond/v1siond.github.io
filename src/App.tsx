@@ -62,7 +62,7 @@ export default class App extends Mixins(SoundMixing) {
     return (
       <div id='app'>
         <Toolbar playAudio={this.playAudio} mobile={this.mobile} blog={this.toolbarBlog || false} ref='toolbar' />
-        <router-view playAudio={this.playAudio} style={this.toolbarBlog ? `height: calc( 100vh - ${this.toolbarHeight}px);` : 'height: 100vh;'} />
+        <router-view playAudio={this.playAudio} style={this.toolbarBlog ? `min-height: calc( 100vh - ${this.toolbarHeight}px); height: unset;` : 'height: 100vh;'} />
         <footer class='footer'>
           <article class='about'>
             <h2 class='game-title -credits'>About</h2>

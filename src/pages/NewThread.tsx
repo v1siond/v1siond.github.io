@@ -105,10 +105,10 @@ export default class NewThread extends Vue {
               />
             </fieldset>
             <button
-              class='pure-button pure-button-primary pure-input-1'
+              class='pure-button -fixed pure-button-primary input'
               onClick={() => this.mutate()}
             >
-              create Thread
+            create Thread
             </button>
           </div>
         ) : (
